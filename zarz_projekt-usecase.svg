@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="Arial" font-size="13" width="2329" height="1540">
+	<desc>UML class diagram zarz_projekt</desc>
+	<g id="uml-class-model-online-image">
+		<defs>
+			<linearGradient id="greyGradient" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+				<stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+				<stop offset="100%" stop-color="#E5E5E5" stop-opacity="1" />
+				
+			</linearGradient>
+			<linearGradient id="packageGradient" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+				<stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+				<stop offset="100%" stop-color="#EFE9DE" stop-opacity="1" />
+				
+			</linearGradient>
+			
+		</defs>
+		<g>
+			<ellipse cx="52" cy="709" rx="10" ry="10" fill="white" stroke="black" stroke-width="1.5" />
+			<line x1="52" y1="719" x2="52" y2="753" stroke-width="1.5" stroke="black" />
+			<line x1="52" y1="753" x2="65" y2="774" stroke-width="1.5" stroke="black" />
+			<line x1="52" y1="753" x2="39" y2="774" stroke-width="1.5" stroke="black" />
+			<line x1="65" y1="736" x2="39" y2="736" stroke-width="1.5" stroke="black" />
+			<text x="52" y="789" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Uzytkownik</text>
+			
+		</g>
+		<g>
+			<ellipse cx="157" cy="411" rx="10" ry="10" fill="white" stroke="black" stroke-width="1.5" />
+			<line x1="157" y1="421" x2="157" y2="455" stroke-width="1.5" stroke="black" />
+			<line x1="157" y1="455" x2="170" y2="476" stroke-width="1.5" stroke="black" />
+			<line x1="157" y1="455" x2="144" y2="476" stroke-width="1.5" stroke="black" />
+			<line x1="170" y1="438" x2="144" y2="438" stroke-width="1.5" stroke="black" />
+			<text x="157" y="491" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Lider</text>
+			
+		</g>
+		<g>
+			<ellipse cx="211" cy="1079" rx="10" ry="10" fill="white" stroke="black" stroke-width="1.5" />
+			<line x1="211" y1="1089" x2="211" y2="1123" stroke-width="1.5" stroke="black" />
+			<line x1="211" y1="1123" x2="224" y2="1144" stroke-width="1.5" stroke="black" />
+			<line x1="211" y1="1123" x2="198" y2="1144" stroke-width="1.5" stroke="black" />
+			<line x1="224" y1="1106" x2="198" y2="1106" stroke-width="1.5" stroke="black" />
+			<text x="211" y="1159" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Uczestnik</text>
+			
+		</g>
+		<g>
+			<ellipse cx="850" cy="411" rx="69" ry="54" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="850" y="388" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Utwórz projekt</text>
+			<line x1="802" y1="398" x2="897" y2="398" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="850" y="420" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Brak nazwy</text>
+			<text x="850" y="438" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Niepoprawna nazwa</text>
+			<text x="850" y="456" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Anuluj</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1258" cy="435" rx="75" ry="54" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1258" y="412" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Dodanie uczestnika</text>
+			<line x1="1205" y1="422" x2="1310" y2="422" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1258" y="444" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Uzytkownik nie istnieje</text>
+			<text x="1258" y="462" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Lider</text>
+			<text x="1258" y="480" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			
+		</g>
+		<g>
+			<ellipse cx="492" cy="753" rx="91" ry="73" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="492" y="713" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Zaloguj</text>
+			<line x1="428" y1="723" x2="555" y2="723" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="492" y="745" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledne dane</text>
+			<text x="492" y="763" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Anulowanie</text>
+			<text x="492" y="781" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Przypomnienie hasla</text>
+			<text x="492" y="799" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Brak połączenia z serwerem</text>
+			
+		</g>
+		<g>
+			<ellipse cx="557" cy="585" rx="90" ry="38" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="557" y="574" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Ponowne podanie danych</text>
+			<line x1="494" y1="584" x2="619" y2="584" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="557" y="606" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">3 krotna próba</text>
+			
+		</g>
+		<g>
+			<ellipse cx="372" cy="596" rx="70" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="372" y="599" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Przerwij logowanie</text>
+			
+		</g>
+		<g>
+			<ellipse cx="519" cy="964" rx="86" ry="31" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="519" y="965" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Wysłanie hasła na e-mail</text>
+			
+		</g>
+		<g>
+			<ellipse cx="724" cy="247" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="724" y="251" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj nazwę</text>
+			
+		</g>
+		<g>
+			<ellipse cx="900" cy="236" rx="90" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="900" y="239" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Zmień na poprawną nazwę</text>
+			
+		</g>
+		<g>
+			<ellipse cx="325" cy="915" rx="91" ry="37" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="325" y="905" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Spróbuj ponownie później</text>
+			<line x1="261" y1="915" x2="388" y2="915" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="325" y="937" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">3 krotna próba</text>
+			
+		</g>
+		<g>
+			<ellipse cx="696" cy="375" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="696" y="379" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Wycofanie</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1259" cy="281" rx="85" ry="57" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1259" y="257" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Zmien nazwe</text>
+			<line x1="1199" y1="267" x2="1318" y2="267" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1259" y="289" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledna nazwa</text>
+			<text x="1259" y="307" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Brak nazwy</text>
+			<text x="1259" y="325" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Anuluj</text>
+			<text x="1259" y="343" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1549" cy="31" rx="92" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1549" y="34" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Zmien na poprawna nazwe</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1550" cy="109" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1550" y="113" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj nazwe</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1550" cy="186" rx="76" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1550" y="189" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Wroc do starej nazwy</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1552" cy="467" rx="111" ry="35" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1552" y="465" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Nadanie uprawnien lidera projektu</text>
+			
+		</g>
+		<g>
+			<ellipse cx="877" cy="747" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="877" y="746" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Zarzadzanie projektem</text>
+			<line x1="842" y1="756" x2="912" y2="756" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="877" y="778" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Lider</text>
+			
+		</g>
+		<g>
+			<ellipse cx="717" cy="754" rx="68" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="717" y="757" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Wybranie projektu</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1239" cy="619" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1239" y="618" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Usuniecie projektu</text>
+			<line x1="1204" y1="628" x2="1274" y2="628" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1239" y="650" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			
+		</g>
+		<g>
+			<ellipse cx="2083" cy="562" rx="111" ry="35" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="2083" y="560" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Wycofanie z powodu braku uprawnien</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1258" cy="794" rx="142" ry="74" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1258" y="753" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Utworz wydarzenie</text>
+			<line x1="1159" y1="763" x2="1357" y2="763" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1258" y="785" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			<text x="1258" y="803" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Data z przeszłości</text>
+			<text x="1258" y="821" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Błędna nazwa uzytkownika</text>
+			<text x="1258" y="839" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Brak celu (calego projektu badz uzytkownika)</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1551" cy="729" rx="74" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1551" y="732" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprawną datę</text>
+			
+		</g>
+		<g>
+			<ellipse cx="2083" cy="782" rx="81" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="2083" y="785" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprawna nazwe</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1550" cy="886" rx="111" ry="35" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1550" y="884" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj dla kogo ma byc wydarzenie</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1207" cy="948" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1207" y="949" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Usun wydarzenie</text>
+			<line x1="1172" y1="959" x2="1242" y2="959" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1207" y="981" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			<text x="1207" y="999" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledny identyfikator wydarzenia</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1551" cy="1019" rx="101" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1551" y="1022" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprawny identyfikator</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1225" cy="1099" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1225" y="1100" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Usuniecie uczestnika</text>
+			<line x1="1190" y1="1110" x2="1260" y2="1110" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1225" y="1132" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			<text x="1225" y="1150" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledna nazwa uczestnika</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1220" cy="1234" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1220" y="1237" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Dodaj zadanie</text>
+			<line x1="1185" y1="1247" x2="1255" y2="1247" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1220" y="1269" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			<text x="1220" y="1287" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledna nazwa uzytkownika</text>
+			<text x="1220" y="1305" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Data z przeszlosci</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1550" cy="1391" rx="75" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1550" y="1394" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprwana date</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1241" cy="1394" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1241" y="1395" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Usun zadanie</text>
+			<line x1="1206" y1="1405" x2="1276" y2="1405" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="1241" y="1427" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledny identyfikator</text>
+			<text x="1241" y="1445" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie jest liderem</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1551" cy="1491" rx="101" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1551" y="1494" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprawny identyfikator</text>
+			
+		</g>
+		<g>
+			<ellipse cx="624" cy="1139" rx="50" ry="28" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="624" y="1140" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Utworz notatke</text>
+			<line x1="589" y1="1150" x2="659" y2="1150" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="624" y="1172" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledna nazwa uzytkownika</text>
+			<text x="624" y="1190" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Pusta notatka</text>
+			
+		</g>
+		<g>
+			<ellipse cx="415" cy="1312" rx="111" ry="35" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="415" y="1310" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprawna nazwe uzytkownika</text>
+			
+		</g>
+		<g>
+			<ellipse cx="696" cy="1312" rx="69" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="696" y="1315" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj tresc notatki</text>
+			
+		</g>
+		<g>
+			<ellipse cx="896" cy="1164" rx="95" ry="57" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="896" y="1136" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Usun notatke</text>
+			<line x1="830" y1="1146" x2="962" y2="1146" stroke-width="1.0" stroke="#CCCCCC" />
+			<text x="896" y="1168" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Nie ma uprawnien</text>
+			<text x="896" y="1186" text-anchor="middle" font-style="normal" font-weight="normal" fill="black">Bledny identyfikator</text>
+			
+		</g>
+		<g>
+			<ellipse cx="802" cy="1313" rx="98" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="802" y="1316" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Powrot, nie masz uprawnien</text>
+			
+		</g>
+		<g>
+			<ellipse cx="1030" cy="1312" rx="101" ry="29" fill="url(#greyGradient)" stroke="#CCCCCC" stroke-width="1.0" />
+			<text x="1030" y="1315" text-anchor="middle" font-style="normal" font-weight="bold" fill="#033656">Podaj poprawny identyfikator</text>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="190,1064 73,794" />
+			<g transform="translate(73,794)">
+				<g transform="rotate(-23)">
+					<polygon fill="#FFFFFF" stroke-width="1" stroke="#000000" points="-6,10 0,0 6,10 -6,10" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="139,496 70,694" />
+			<g transform="translate(70,694)">
+				<g transform="rotate(-161)">
+					<polygon fill="#FFFFFF" stroke-width="1" stroke="#000000" points="-6,10 0,0 6,10 -6,10" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="781,414 207,443" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="102,745 401,751" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="542,623 520,680" stroke-dasharray="10, 5" />
+			<g transform="translate(520,680)">
+				<g transform="rotate(-159)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="394,625 436,680" stroke-dasharray="10, 5" />
+			<g transform="translate(436,680)">
+				<g transform="rotate(143)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="515,933 501,826" stroke-dasharray="10, 5" />
+			<g transform="translate(501,826)">
+				<g transform="rotate(-7)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="892,265 865,357" stroke-dasharray="10, 5" />
+			<g transform="translate(865,357)">
+				<g transform="rotate(-164)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="746,275 809,357" stroke-dasharray="10, 5" />
+			<g transform="translate(809,357)">
+				<g transform="rotate(142)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="363,878 417,826" stroke-dasharray="10, 5" />
+			<g transform="translate(417,826)">
+				<g transform="rotate(46)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="368,625 330,878" stroke-dasharray="10, 5" />
+			<g transform="translate(330,878)">
+				<g transform="rotate(-171)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="442,592 467,590" stroke-dasharray="10, 5" />
+			<g transform="translate(467,590)">
+				<g transform="rotate(85)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="746,387 781,395" stroke-dasharray="10, 5" />
+			<g transform="translate(781,395)">
+				<g transform="rotate(103)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="568,680 793,465" stroke-dasharray="10, 5" />
+			<g transform="translate(793,465)">
+				<g transform="rotate(46)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1515,60 1325,224" stroke-dasharray="10, 5" />
+			<g transform="translate(1325,224)">
+				<g transform="rotate(-131)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1503,137 1344,231" stroke-dasharray="10, 5" />
+			<g transform="translate(1344,231)">
+				<g transform="rotate(-121)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1474,211 1344,253" stroke-dasharray="10, 5" />
+			<g transform="translate(1344,253)">
+				<g transform="rotate(-108)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1441,455 1333,443" stroke-dasharray="10, 5" />
+			<g transform="translate(1333,443)">
+				<g transform="rotate(-84)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="583,753 649,754" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="785,751 827,749" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1192,489 911,719" stroke-dasharray="10, 5" />
+			<g transform="translate(911,719)">
+				<g transform="rotate(-129)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1212,338 900,719" stroke-dasharray="10, 5" />
+			<g transform="translate(900,719)">
+				<g transform="rotate(-141)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="854,465 875,719" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1993,527 1535,349" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2024,527 1588,268" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1588,268 1344,278" stroke-dasharray="10, 5" />
+			<g transform="translate(1344,278)">
+				<g transform="rotate(-92)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1535,349 1333,412" stroke-dasharray="10, 5" />
+			<g transform="translate(1333,412)">
+				<g transform="rotate(-107)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1972,569 1289,616" stroke-dasharray="10, 5" />
+			<g transform="translate(1289,616)">
+				<g transform="rotate(-94)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1189,637 927,729" stroke-dasharray="10, 5" />
+			<g transform="translate(927,729)">
+				<g transform="rotate(-109)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="207,451 648,499" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="648,499 851,719" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="261,1102 666,1004" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="666,1004 854,775" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1116,776 927,753" stroke-dasharray="10, 5" />
+			<g transform="translate(927,753)">
+				<g transform="rotate(-83)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1972,583 1520,668" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1477,745 1400,762" stroke-dasharray="10, 5" />
+			<g transform="translate(1400,762)">
+				<g transform="rotate(-102)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2002,783 1400,792" stroke-dasharray="10, 5" />
+			<g transform="translate(1400,792)">
+				<g transform="rotate(-91)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1439,851 1400,839" stroke-dasharray="10, 5" />
+			<g transform="translate(1400,839)">
+				<g transform="rotate(-73)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2046,597 1685,938" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1685,938 1257,947" stroke-dasharray="10, 5" />
+			<g transform="translate(1257,947)">
+				<g transform="rotate(-91)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1450,998 1257,958" stroke-dasharray="10, 5" />
+			<g transform="translate(1257,958)">
+				<g transform="rotate(-78)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1161,920 923,775" stroke-dasharray="10, 5" />
+			<g transform="translate(923,775)">
+				<g transform="rotate(-59)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1197,1071 905,775" stroke-dasharray="10, 5" />
+			<g transform="translate(905,775)">
+				<g transform="rotate(-45)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2062,597 1814,1021" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1814,1021 1275,1092" stroke-dasharray="10, 5" />
+			<g transform="translate(1275,1092)">
+				<g transform="rotate(-98)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2098,597 2228,904" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2019,1251 1270,1235" stroke-dasharray="10, 5" />
+			<g transform="translate(1270,1235)">
+				<g transform="rotate(-89)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1489,1362 1270,1258" stroke-dasharray="10, 5" />
+			<g transform="translate(1270,1258)">
+				<g transform="rotate(-65)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2106,597 2299,896" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2012,1432 1291,1396" stroke-dasharray="10, 5" />
+			<g transform="translate(1291,1396)">
+				<g transform="rotate(-87)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1458,1462 1291,1410" stroke-dasharray="10, 5" />
+			<g transform="translate(1291,1410)">
+				<g transform="rotate(-73)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1200,1206 897,775" stroke-dasharray="10, 5" />
+			<g transform="translate(897,775)">
+				<g transform="rotate(-35)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1225,1366 893,775" stroke-dasharray="10, 5" />
+			<g transform="translate(893,775)">
+				<g transform="rotate(-29)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2070,811 1915,1156" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2076,811 1987,1182" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2002,757 1382,568" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2299,896 2012,1432" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="2228,904 2019,1251" stroke-dasharray="10, 5" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1987,1182 1270,1231" stroke-dasharray="10, 5" />
+			<g transform="translate(1270,1231)">
+				<g transform="rotate(-94)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1915,1156 1275,1103" stroke-dasharray="10, 5" />
+			<g transform="translate(1275,1103)">
+				<g transform="rotate(-85)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1382,568 1308,489" stroke-dasharray="10, 5" />
+			<g transform="translate(1308,489)">
+				<g transform="rotate(-43)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1520,668 1400,726" stroke-dasharray="10, 5" />
+			<g transform="translate(1400,726)">
+				<g transform="rotate(-116)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="684,1283 636,1167" stroke-dasharray="10, 5" />
+			<g transform="translate(636,1167)">
+				<g transform="rotate(-22)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="457,1277 590,1167" stroke-dasharray="10, 5" />
+			<g transform="translate(590,1167)">
+				<g transform="rotate(50)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="820,1284 860,1221" stroke-dasharray="10, 5" />
+			<g transform="translate(860,1221)">
+				<g transform="rotate(32)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="1004,1283 948,1221" stroke-dasharray="10, 5" />
+			<g transform="translate(948,1221)">
+				<g transform="rotate(-42)">
+					<polyline fill="none" stroke-width="1" stroke="#000000" points="-4,8 0,0 4,8" />
+					
+				</g>
+				
+			</g>
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="642,1111 859,775" />
+			
+		</g>
+		<g>
+			<polyline fill="none" stroke-width="1" stroke="#000000" points="878,775 893,1107" />
+			
+		</g>
+		<text x="505" y="640" fill="#000000">« extend »</text>
+		<text x="389" y="641" fill="#000000">« extend »</text>
+		<text x="482" y="868" fill="#000000">« extend »</text>
+		<text x="853" y="299" fill="#000000">« extend »</text>
+		<text x="752" y="304" fill="#000000">« extend »</text>
+		<text x="364" y="840" fill="#000000">« extend »</text>
+		<text x="323" y="740" fill="#000000">« extend »</text>
+		<text x="429" y="579" fill="#000000">« extend »</text>
+		<text x="738" y="379" fill="#000000">« extend »</text>
+		<text x="655" y="561" fill="#000000">« include »</text>
+		<text x="1394" y="130" fill="#000000">« extend »</text>
+		<text x="1398" y="172" fill="#000000">« extend »</text>
+		<text x="1383" y="220" fill="#000000">« extend »</text>
+		<text x="1361" y="437" fill="#000000">« extend »</text>
+		<text x="1026" y="592" fill="#000000">« extend »</text>
+		<text x="1048" y="559" fill="#000000">« extend »</text>
+		<text x="1738" y="426" fill="#000000">« extend »</text>
+		<text x="1780" y="386" fill="#000000">« extend »</text>
+		<text x="1605" y="581" fill="#000000">« extend »</text>
+		<text x="1032" y="671" fill="#000000">« extend »</text>
+		<text x="996" y="753" fill="#000000">« extend »</text>
+		<text x="1720" y="614" fill="#000000">« extend »</text>
+		<text x="1413" y="742" fill="#000000">« extend »</text>
+		<text x="1675" y="776" fill="#000000">« extend »</text>
+		<text x="1394" y="833" fill="#000000">« extend »</text>
+		<text x="1840" y="756" fill="#000000">« extend »</text>
+		<text x="1328" y="966" fill="#000000">« extend »</text>
+		<text x="1016" y="836" fill="#000000">« extend »</text>
+		<text x="1025" y="911" fill="#000000">« extend »</text>
+		<text x="1912" y="797" fill="#000000">« extend »</text>
+		<text x="2137" y="739" fill="#000000">« extend »</text>
+		<text x="1354" y="1298" fill="#000000">« extend »</text>
+		<text x="2177" y="735" fill="#000000">« extend »</text>
+		<text x="1349" y="1424" fill="#000000">« extend »</text>
+		<text x="1023" y="979" fill="#000000">« extend »</text>
+		<text x="1033" y="1059" fill="#000000">« extend »</text>
+		<text x="1967" y="972" fill="#000000">« extend »</text>
+		<text x="2006" y="985" fill="#000000">« extend »</text>
+		<text x="1666" y="651" fill="#000000">« extend »</text>
+		<text x="634" y="1213" fill="#000000">« extend »</text>
+		<text x="498" y="1210" fill="#000000">« extend »</text>
+		<text x="814" y="1241" fill="#000000">« extend »</text>
+		<text x="950" y="1240" fill="#000000">« extend »</text>
+		
+	</g>
+	
+</svg>
