@@ -13,8 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        oknoglowne.cpp
+        oknoglowne.cpp \
+    uzytkownik.cpp \
+    ustawieniawstepne.cpp
 
-HEADERS  += oknoglowne.h
+HEADERS  += oknoglowne.h \
+    uzytkownik.h \
+    ustawieniawstepne.h
 
-FORMS    += oknoglowne.ui
+FORMS    += oknoglowne.ui \
+    ustawieniawstepne.ui
