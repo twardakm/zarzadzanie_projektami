@@ -20,7 +20,7 @@
       <x>0</x>
       <y>40</y>
       <width>531</width>
-      <height>61</height>
+      <height>81</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
@@ -35,9 +35,19 @@
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="etykieta">
        <property name="text">
         <string>Podaj ścieżkę do pliku z bazą danych (może być na serwerze ftp)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="blad">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
        </property>
       </widget>
      </item>
