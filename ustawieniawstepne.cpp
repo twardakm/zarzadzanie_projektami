@@ -33,17 +33,32 @@ bool UstawieniaWstepne::validateCurrentPage()
 
 bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
 {
+
+    //1. sprawdzanie czy istnieje plik
     if (!QFile::exists(ui->sciezka->text()))
     {
         ui->blad->setText("Podany plik nie istnieje");
         return false;
     }
+
     QSqlDatabase baza;
     baza = QSqlDatabase::addDatabase("QSQLITE");
     baza.setDatabaseName(ui->sciezka->text());
+
+    //2. sprawdzanie czy baza danych poprawnie się otworzyła
     if(!baza.open())
     {
         ui->blad->setText("Nie można otworzyć bazy danych");
+        return false;
+    }
+
+    QSqlQuery pytanie(baza);
+
+    //3. sprawdzanie czy istnieje tabela użytkowników
+    if (!baza.tables().contains("uzytkownicy"))
+    {
+        baza.close();
+        ui->blad->setText("Brak tabeli użytkowników. Błędna baza danych");
         return false;
     }
 

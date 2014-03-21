@@ -7,7 +7,10 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSql>
 #include <QtSql/QtSql>
+#include <QSqlQuery>
+#include <QtSql/QSqlQuery>
 #include <QPalette>
+#include <QStringList>
 
 namespace Ui {
 class UstawieniaWstepne;
