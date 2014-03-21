@@ -12,6 +12,7 @@
 #include <QPalette>
 #include <QStringList>
 #include <QFileInfo>
+#include <QCryptographicHash>
 
 #define TABELA_UZYTKOWNICY "uzytkownicy"
 #define KOLUMNA_NAZWA_SELECT "SELECT nazwa FROM uzytkownicy"

@@ -41,14 +41,31 @@ bool UstawieniaWstepne::validateCurrentPage()
 bool UstawieniaWstepne::sprawdz_dane_logowania()
 {
     QSqlQuery *zapytanie = new QSqlQuery(baza);
-    zapytanie->exec("SELECT mail FROM uzytkownicy WHERE nazwa='" +
-                    ui->lista_uzytkownikow->currentItem()->text() + "'");
+    zapytanie->exec("SELECT mail, haslo FROM uzytkownicy WHERE nazwa='" +
+                    ui->lista_uzytkownikow->currentItem()->text() +
+                    "'");
+
+    /*sprawdzenie adresu e-mail
+     * ------------------------ */
     zapytanie->next();
     if(zapytanie->value(0).toString() != ui->edycja_mail->text())
     {
         ui->blad_logowania->setText("Błędny adres e-mail");
         return false;
     }
+    /* ------------------------ */
+
+    /*sprawdzenie hasła
+     * ------------------------ */
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    hash.addData(ui->edycja_haslo->text().toLatin1());
+    if(zapytanie->value(1).toString() != hash.result().toHex())
+    {
+        ui->blad_logowania->setText("Błędne hasło");
+        return false;
+    }
+    /* ------------------------ */
+
     return true;
 }
 
