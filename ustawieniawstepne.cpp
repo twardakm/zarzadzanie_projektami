@@ -52,13 +52,21 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
         return false;
     }
 
-    QSqlQuery pytanie(baza);
-
     //3. sprawdzanie czy istnieje tabela użytkowników
-    if (!baza.tables().contains("uzytkownicy"))
+    if (!baza.tables().contains(TABELA_UZYTKOWNICY))
     {
         baza.close();
         ui->blad->setText("Brak tabeli użytkowników. Błędna baza danych");
+        return false;
+    }
+
+    //4. sprawdzanie czy istnieją kolumny
+    if (!baza.exec(KOLUMNA_NAZWA_SELECT).exec() ||
+        !baza.exec(KOLUMNA_MAIL_SELECT).exec() ||
+        !baza.exec(KOLUMNA_HASLO_SELECT).exec())
+    {
+        baza.close();
+        ui->blad->setText("Nieodpowiedni format bazy danych");
         return false;
     }
 

@@ -12,6 +12,11 @@
 #include <QPalette>
 #include <QStringList>
 
+#define TABELA_UZYTKOWNICY "uzytkownicy"
+#define KOLUMNA_NAZWA_SELECT "SELECT nazwa FROM uzytkownicy"
+#define KOLUMNA_MAIL_SELECT "SELECT mail FROM uzytkownicy"
+#define KOLUMNA_HASLO_SELECT "SELECT haslo FROM uzytkownicy"
+
 namespace Ui {
 class UstawieniaWstepne;
 }
