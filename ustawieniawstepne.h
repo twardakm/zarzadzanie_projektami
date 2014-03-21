@@ -37,7 +37,10 @@ private slots:
 
 private:
     Ui::UstawieniaWstepne *ui;
+    QSqlDatabase baza;
+
     bool validateCurrentPage();
+    bool sprawdz_dane_logowania();
 };
 
 #endif // USTAWIENIAWSTEPNE_H

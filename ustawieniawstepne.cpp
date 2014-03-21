@@ -11,6 +11,7 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
     QPalette kolor;
     kolor.setColor(QPalette::WindowText, Qt::red);
     ui->blad->setPalette(kolor);
+    ui->blad_logowania->setPalette(kolor);
     //-----------
     ui->blad->setText("");
     connect(ui->przegladaj, SIGNAL(clicked()), this, SLOT(przegladaj_wcisniety()));
@@ -18,6 +19,7 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
 
 UstawieniaWstepne::~UstawieniaWstepne()
 {
+    baza.close();
     delete ui;
 }
 
@@ -27,6 +29,25 @@ bool UstawieniaWstepne::validateCurrentPage()
     {
         if(!sprawdz_poprawnosc_sqlite())
             return false;
+    }
+    if (this->currentId() == 1)
+    {
+        if(!sprawdz_dane_logowania())
+            return false;
+    }
+    return true;
+}
+
+bool UstawieniaWstepne::sprawdz_dane_logowania()
+{
+    QSqlQuery *zapytanie = new QSqlQuery(baza);
+    zapytanie->exec("SELECT mail FROM uzytkownicy WHERE nazwa='" +
+                    ui->lista_uzytkownikow->currentItem()->text() + "'");
+    zapytanie->next();
+    if(zapytanie->value(0).toString() != ui->edycja_mail->text())
+    {
+        ui->blad_logowania->setText("Błędny adres e-mail");
+        return false;
     }
     return true;
 }
@@ -41,7 +62,6 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
         return false;
     }
 
-    QSqlDatabase baza;
     baza = QSqlDatabase::addDatabase("QSQLITE");
     baza.setDatabaseName(ui->sciezka->text());
 
@@ -79,7 +99,7 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
         ui->lista_uzytkownikow->addItem(zapytanie->value(0).toString());
 
     delete zapytanie;
-    baza.close();
+
     return true;
 }
 
