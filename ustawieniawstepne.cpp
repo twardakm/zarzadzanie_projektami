@@ -5,6 +5,7 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
     QWizard(parent),
     ui(new Ui::UstawieniaWstepne)
 {
+    this->activateWindow();
     ui->setupUi(this);
     ui->sciezka->insert("zarzadzanie.sqlite");
     //kolor błędu
@@ -45,6 +46,7 @@ bool UstawieniaWstepne::sprawdz_dane_logowania()
     zapytanie->exec("SELECT haslo FROM uzytkownicy WHERE nazwa='" +
                     ui->lista_uzytkownikow->currentItem()->text() +
                     "'");
+    zapytanie->next();
 
     /*sprawdzenie hasła
      * ------------------------ */
