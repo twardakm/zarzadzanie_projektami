@@ -11,6 +11,7 @@
 #include <QtSql/QSqlQuery>
 #include <QPalette>
 #include <QStringList>
+#include <QFileInfo>
 
 #define TABELA_UZYTKOWNICY "uzytkownicy"
 #define KOLUMNA_NAZWA_SELECT "SELECT nazwa FROM uzytkownicy"
