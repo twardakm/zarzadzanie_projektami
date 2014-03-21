@@ -70,6 +70,15 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
         return false;
     }
 
+    //baza danych poprawna, przygotowanie ostatniej strony ustawien
+    ui->edycja_haslo->setEchoMode(QLineEdit::Password);
+    QSqlQuery *zapytanie = new QSqlQuery(baza);
+    zapytanie->exec(KOLUMNA_NAZWA_SELECT);
+
+    while(zapytanie->next())
+        ui->lista_uzytkownikow->addItem(zapytanie->value(0).toString());
+
+    delete zapytanie;
     baza.close();
     return true;
 }
