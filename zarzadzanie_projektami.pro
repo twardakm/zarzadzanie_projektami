@@ -23,3 +23,5 @@ HEADERS  += oknoglowne.h \
 
 FORMS    += oknoglowne.ui \
     ustawieniawstepne.ui
+
+RC_FILE = zarzadzanie_projektami.rc

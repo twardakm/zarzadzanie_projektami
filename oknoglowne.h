@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QInputDialog>
+#include <QMessageBox>
+#include <QIcon>
 #include <list>
 #include <iterator>
 
@@ -24,6 +26,10 @@ public:
 
 protected:
 
+
+private slots:
+    void informacje_Qt_wcisniety();
+    void zmien_uzytkownika_wcisniety();
 
 private:
     Ui::OknoGlowne *ui;
