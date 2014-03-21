@@ -69,7 +69,7 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
 {
 
     //1. sprawdzanie czy istnieje plik
-    if (!QFileInfo::exists(ui->sciezka->text()))
+    if (!QFile::exists(ui->sciezka->text()))
     {
         ui->blad->setText("Podany plik nie istnieje");
         return false;
