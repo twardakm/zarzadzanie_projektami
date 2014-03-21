@@ -35,6 +35,7 @@ public:
 
 private slots:
     void przegladaj_wcisniety();
+    void wyczysc_dane_formularza();
 
 private:
     Ui::UstawieniaWstepne *ui;

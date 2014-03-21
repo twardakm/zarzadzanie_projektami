@@ -15,6 +15,7 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
     //-----------
     ui->blad->setText("");
     connect(ui->przegladaj, SIGNAL(clicked()), this, SLOT(przegladaj_wcisniety()));
+    connect(ui->lista_uzytkownikow, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(wyczysc_dane_formularza()));
 }
 
 UstawieniaWstepne::~UstawieniaWstepne()
@@ -41,31 +42,24 @@ bool UstawieniaWstepne::validateCurrentPage()
 bool UstawieniaWstepne::sprawdz_dane_logowania()
 {
     QSqlQuery *zapytanie = new QSqlQuery(baza);
-    zapytanie->exec("SELECT mail, haslo FROM uzytkownicy WHERE nazwa='" +
+    zapytanie->exec("SELECT haslo FROM uzytkownicy WHERE nazwa='" +
                     ui->lista_uzytkownikow->currentItem()->text() +
                     "'");
-
-    /*sprawdzenie adresu e-mail
-     * ------------------------ */
-    zapytanie->next();
-    if(zapytanie->value(0).toString() != ui->edycja_mail->text())
-    {
-        ui->blad_logowania->setText("Błędny adres e-mail");
-        return false;
-    }
-    /* ------------------------ */
 
     /*sprawdzenie hasła
      * ------------------------ */
     QCryptographicHash hash(QCryptographicHash::Md5);
     hash.addData(ui->edycja_haslo->text().toLatin1());
-    if(zapytanie->value(1).toString() != hash.result().toHex())
+    if(zapytanie->value(0).toString() != hash.result().toHex())
     {
         ui->blad_logowania->setText("Błędne hasło");
+        ui->edycja_haslo->setText("");
+        delete zapytanie;
         return false;
     }
     /* ------------------------ */
 
+    delete zapytanie;
     return true;
 }
 
@@ -125,4 +119,19 @@ void UstawieniaWstepne::przegladaj_wcisniety()
     ui->sciezka->selectAll();
     ui->sciezka->insert(QFileDialog::getOpenFileName(this, tr("Wybierz plik bazy danych"),
                                                QApplication::applicationDirPath(), tr("Bazy danych (*.sqlite)")));
+}
+
+void UstawieniaWstepne::wyczysc_dane_formularza()
+{
+    ui->edycja_haslo->setText("");
+
+    //ustawienia wyświetlania maila
+    QSqlQuery *zapytanie = new QSqlQuery(baza);
+    zapytanie->exec("SELECT mail FROM uzytkownicy WHERE nazwa='" +
+                    ui->lista_uzytkownikow->currentItem()->text() +
+                    "'");
+    zapytanie->next();
+    ui->edycja_mail->setText(zapytanie->value(0).toString());
+
+    delete zapytanie;
 }

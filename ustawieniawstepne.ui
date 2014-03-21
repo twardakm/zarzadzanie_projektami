@@ -80,9 +80,6 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="edycja_mail"/>
-       </item>
        <item row="2" column="0">
         <widget class="QLabel" name="etykieta_haslo">
          <property name="text">
@@ -95,6 +92,21 @@
        </item>
        <item row="3" column="1">
         <widget class="QLabel" name="blad_logowania">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="edycja_mail">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string/>
          </property>
