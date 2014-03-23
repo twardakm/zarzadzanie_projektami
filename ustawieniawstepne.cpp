@@ -152,13 +152,16 @@ void UstawieniaWstepne::utworz_wcisniety()
         return;
     }
     //sprawdzenie poprawności wykonania polecenia
-    if (baza.exec("CREATE TABLE 'uzytkownicy' ('nazwa' TEXT, 'mail' TEXT, 'haslo' TEXT)").exec() == false)
+    QSqlQuery *zapytanie = new QSqlQuery(baza);
+    if (!zapytanie->exec("CREATE TABLE 'uzytkownicy' ('nazwa' TEXT, 'mail' TEXT, 'haslo' TEXT)"))
     {
         ui->blad->setText("Błąd tworzenia tablicy");
+        delete zapytanie;
         return;
     }
     else
         ui->blad->setText("");
+    delete zapytanie;
 
     baza.close();
 }
