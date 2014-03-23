@@ -17,12 +17,13 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
     ui->blad->setText("");
     connect(ui->przegladaj, SIGNAL(clicked()), this, SLOT(przegladaj_wcisniety()));
     connect(ui->lista_uzytkownikow, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(wyczysc_dane_formularza()));
+    connect(ui->utworz, SIGNAL(released()), this, SLOT(utworz_wcisniety()));
 }
 
 UstawieniaWstepne::~UstawieniaWstepne()
 {
-    baza.close();
-    delete ui;
+    if(baza.isOpen()) baza.close();
+    if(ui != NULL) delete ui;
 }
 
 bool UstawieniaWstepne::validateCurrentPage()
@@ -42,8 +43,15 @@ bool UstawieniaWstepne::validateCurrentPage()
 
 bool UstawieniaWstepne::sprawdz_dane_logowania()
 {
+    if (ui->lista_uzytkownikow->count() == 0)
+    {
+        ui->blad_logowania->setText("Brak użytkowników");
+        return false;
+    }
     QSqlQuery *zapytanie = new QSqlQuery(baza);
-    zapytanie->exec("SELECT haslo FROM uzytkownicy WHERE nazwa='" +
+    zapytanie->exec("SELECT " + (QString)TABELA_HASLO +
+                    " FROM " + (QString)TABELA_UZYTKOWNICY + " WHERE " +
+                    (QString)TABELA_NAZWA + "='" +
                     ui->lista_uzytkownikow->currentItem()->text() +
                     "'");
     zapytanie->next();
@@ -62,6 +70,7 @@ bool UstawieniaWstepne::sprawdz_dane_logowania()
     /* ------------------------ */
 
     delete zapytanie;
+    baza.close();
     return true;
 }
 
@@ -123,13 +132,46 @@ void UstawieniaWstepne::przegladaj_wcisniety()
                                                QApplication::applicationDirPath(), tr("Bazy danych (*.sqlite)")));
 }
 
+void UstawieniaWstepne::utworz_wcisniety()
+{
+    ui->sciezka->selectAll();
+    ui->sciezka->insert(QFileDialog::getSaveFileName(this, tr("Utwórz bazę danych"),
+                                               QApplication::applicationDirPath(), tr("Bazy danych (*.sqlite)")));
+    QFile *plik = new QFile(ui->sciezka->text());
+    plik->open(QIODevice::WriteOnly);
+    plik->close();
+    delete plik;
+
+    baza = QSqlDatabase::addDatabase("QSQLITE");
+    baza.setDatabaseName(ui->sciezka->text());
+
+    //sprawdzanie czy baza danych poprawnie się otworzyła
+    if(!baza.open())
+    {
+        ui->blad->setText("Nie można otworzyć bazy danych");
+        return;
+    }
+    //sprawdzenie poprawności wykonania polecenia
+    if (baza.exec("CREATE TABLE 'uzytkownicy' ('nazwa' TEXT, 'mail' TEXT, 'haslo' TEXT)").exec() == false)
+    {
+        ui->blad->setText("Błąd tworzenia tablicy");
+        return;
+    }
+    else
+        ui->blad->setText("");
+
+    baza.close();
+}
+
 void UstawieniaWstepne::wyczysc_dane_formularza()
 {
     ui->edycja_haslo->setText("");
 
     //ustawienia wyświetlania maila
     QSqlQuery *zapytanie = new QSqlQuery(baza);
-    zapytanie->exec("SELECT mail FROM uzytkownicy WHERE nazwa='" +
+    zapytanie->exec("SELECT " + (QString)TABELA_MAIL + " FROM " +
+                    (QString)TABELA_UZYTKOWNICY + " WHERE "+
+                    (QString)TABELA_NAZWA + "='" +
                     ui->lista_uzytkownikow->currentItem()->text() +
                     "'");
     zapytanie->next();

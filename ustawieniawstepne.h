@@ -13,6 +13,9 @@
 #include <QCryptographicHash>
 
 #define TABELA_UZYTKOWNICY "uzytkownicy"
+#define TABELA_HASLO "haslo"
+#define TABELA_NAZWA "nazwa"
+#define TABELA_MAIL "mail"
 #define KOLUMNA_NAZWA_SELECT "SELECT nazwa FROM uzytkownicy"
 #define KOLUMNA_MAIL_SELECT "SELECT mail FROM uzytkownicy"
 #define KOLUMNA_HASLO_SELECT "SELECT haslo FROM uzytkownicy"
@@ -33,6 +36,7 @@ public:
 
 private slots:
     void przegladaj_wcisniety();
+    void utworz_wcisniety();
     void wyczysc_dane_formularza();
 
 private:
