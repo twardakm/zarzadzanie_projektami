@@ -10,6 +10,18 @@
     <height>205</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>572</width>
+    <height>205</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>572</width>
+    <height>205</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Wizard</string>
   </property>
@@ -19,11 +31,14 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>531</width>
-      <height>81</height>
+      <width>561</width>
+      <height>117</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
+     <property name="topMargin">
+      <number>45</number>
+     </property>
      <item row="1" column="0">
       <widget class="QLineEdit" name="sciezka"/>
      </item>
@@ -68,18 +83,21 @@
       <x>0</x>
       <y>0</y>
       <width>541</width>
-      <height>91</height>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QListWidget" name="lista_uzytkownikow"/>
      </item>
-     <item row="0" column="1">
+     <item row="1" column="1">
       <layout class="QFormLayout" name="formLayout_2">
+       <property name="topMargin">
+        <number>30</number>
+       </property>
        <item row="1" column="0">
         <widget class="QLabel" name="etykieta_mail">
          <property name="text">
@@ -120,6 +138,19 @@
         </widget>
        </item>
       </layout>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Wybierz użytkownika</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
