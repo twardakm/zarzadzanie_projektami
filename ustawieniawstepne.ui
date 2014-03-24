@@ -31,7 +31,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>561</width>
+      <width>541</width>
       <height>117</height>
      </rect>
     </property>
@@ -134,6 +134,13 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="dodaj_uzytkownika">
+         <property name="text">
+          <string>Dodaj nowego</string>
          </property>
         </widget>
        </item>

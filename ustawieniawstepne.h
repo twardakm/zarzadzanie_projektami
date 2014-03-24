@@ -12,6 +12,8 @@
 #include <QFileInfo>
 #include <QCryptographicHash>
 
+#include "dodawanieuzytkownika.h"
+
 #define TABELA_UZYTKOWNICY "uzytkownicy"
 #define TABELA_HASLO "haslo"
 #define TABELA_NAZWA "nazwa"
@@ -36,12 +38,15 @@ public:
 
 private slots:
     void przegladaj_wcisniety();
+    void dodaj_uzytkownika_wcisniety();
     void utworz_wcisniety();
     void wyczysc_dane_formularza();
 
+protected:
+    QSqlDatabase baza;
+
 private:
     Ui::UstawieniaWstepne *ui;
-    QSqlDatabase baza;
 
     bool validateCurrentPage();
     bool sprawdz_dane_logowania();

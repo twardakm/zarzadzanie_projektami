@@ -15,13 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         oknoglowne.cpp \
     uzytkownik.cpp \
-    ustawieniawstepne.cpp
+    ustawieniawstepne.cpp \
+    dodawanieuzytkownika.cpp
 
 HEADERS  += oknoglowne.h \
     uzytkownik.h \
-    ustawieniawstepne.h
+    ustawieniawstepne.h \
+    dodawanieuzytkownika.h
 
 FORMS    += oknoglowne.ui \
-    ustawieniawstepne.ui
+    ustawieniawstepne.ui \
+    dodawanieuzytkownika.ui
 
 RC_FILE = zarzadzanie_projektami.rc

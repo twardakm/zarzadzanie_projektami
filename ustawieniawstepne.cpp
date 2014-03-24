@@ -18,6 +18,7 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
     connect(ui->przegladaj, SIGNAL(clicked()), this, SLOT(przegladaj_wcisniety()));
     connect(ui->lista_uzytkownikow, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(wyczysc_dane_formularza()));
     connect(ui->utworz, SIGNAL(released()), this, SLOT(utworz_wcisniety()));
+    connect(ui->dodaj_uzytkownika, SIGNAL(clicked()), this, SLOT(dodaj_uzytkownika_wcisniety()));
 }
 
 UstawieniaWstepne::~UstawieniaWstepne()
@@ -181,4 +182,10 @@ void UstawieniaWstepne::wyczysc_dane_formularza()
     ui->edycja_mail->setText(zapytanie->value(0).toString());
 
     delete zapytanie;
+}
+
+void UstawieniaWstepne::dodaj_uzytkownika_wcisniety()
+{
+    DodawanieUzytkownika dodawanie(this, &this->baza);
+    dodawanie.exec();
 }
