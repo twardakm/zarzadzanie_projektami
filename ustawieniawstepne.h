@@ -48,8 +48,9 @@ protected:
 private:
     Ui::UstawieniaWstepne *ui;
 
-    bool validateCurrentPage();
+    void odswiez_liste_uzytkownikow();
     bool sprawdz_dane_logowania();
+    bool validateCurrentPage();
 };
 
 #endif // USTAWIENIAWSTEPNE_H

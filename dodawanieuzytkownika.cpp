@@ -74,8 +74,10 @@ void DodawanieUzytkownika::zatwierdz_wcisniety()
         return;
     }
 
+    //kodowanie hasła Md5sum
     QCryptographicHash hash(QCryptographicHash::Md5);
     hash.addData(ui->haslo_edycja->text().toLatin1());
+
     //zapisywanie danych do bazy
     QSqlQuery zapytanie(baza);
     if(!zapytanie.exec("INSERT INTO "

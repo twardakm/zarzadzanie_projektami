@@ -114,6 +114,14 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
 
     //baza danych poprawna, przygotowanie ostatniej strony ustawien
     ui->edycja_haslo->setEchoMode(QLineEdit::Password);
+
+    odswiez_liste_uzytkownikow();
+
+    return true;
+}
+
+void UstawieniaWstepne::odswiez_liste_uzytkownikow()
+{
     QSqlQuery *zapytanie = new QSqlQuery(baza);
     zapytanie->exec(KOLUMNA_NAZWA_SELECT);
 
@@ -121,8 +129,6 @@ bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
         ui->lista_uzytkownikow->addItem(zapytanie->value(0).toString());
 
     delete zapytanie;
-
-    return true;
 }
 
 void UstawieniaWstepne::przegladaj_wcisniety()
@@ -187,4 +193,6 @@ void UstawieniaWstepne::dodaj_uzytkownika_wcisniety()
 {
     DodawanieUzytkownika dodawanie(this, &this->baza);
     dodawanie.exec();
+
+    odswiez_liste_uzytkownikow();
 }
