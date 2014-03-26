@@ -6,14 +6,24 @@ DodawanieUzytkownika::DodawanieUzytkownika(QWidget *parent) :
     ui(new Ui::DodawanieUzytkownika)
 {
     ui->setupUi(this);
-    ui->informacje->setText("Nie dodano bazy danych");
+    this->reject();
 }
 
-DodawanieUzytkownika::DodawanieUzytkownika(QWidget *parent, QSqlDatabase *baza) :
-    QDialog(parent), ui(new Ui::DodawanieUzytkownika)
+DodawanieUzytkownika::DodawanieUzytkownika(QWidget *parent, QSqlDatabase *ba) :
+    QDialog(parent), ui(new Ui::DodawanieUzytkownika), baza(*ba)
 {
     ui->setupUi(this);
-    connect(ui->przyciski, SIGNAL(accepted()), this, SLOT(przyciski_zaakceptowano()));
+    //kolor informacji
+    QPalette kolor;
+    kolor.setColor(QPalette::WindowText, Qt::red);
+    ui->informacje->setPalette(kolor);
+    ui->informacje->setText("");
+    //ustawienie trybu wprowadzania hasła na hasło
+    ui->haslo_edycja->setEchoMode(QLineEdit::Password);
+    ui->haslo_potwierdz_edycja->setEchoMode(QLineEdit::Password);
+
+    connect(ui->zatwierdz, SIGNAL(clicked()), this, SLOT(zatwierdz_wcisniety()));
+    connect(ui->anuluj, SIGNAL(clicked()), this, SLOT(anuluj_wcisniety()));
 }
 
 DodawanieUzytkownika::~DodawanieUzytkownika()
@@ -21,7 +31,52 @@ DodawanieUzytkownika::~DodawanieUzytkownika()
     delete ui;
 }
 
-void DodawanieUzytkownika::przyciski_zaakceptowano()
+bool DodawanieUzytkownika::sprawdz_haslo()
 {
+    if (ui->haslo_edycja->text() != ui->haslo_potwierdz_edycja->text())
+        return false;
+    if (ui->haslo_edycja->text() == "")
+        return false;
+    return true;
+}
 
+bool DodawanieUzytkownika::sprawdz_mail()
+{
+    if(ui->mail_edycja->text() == "")
+        return false;
+    else
+        return true;
+}
+
+bool DodawanieUzytkownika::sprawdz_uzytkownika()
+{
+    if(ui->nazwa_uzytkownika_edycja->text() == "")
+        return false;
+    else
+        return true;
+}
+
+void DodawanieUzytkownika::zatwierdz_wcisniety()
+{
+    if (!sprawdz_mail())
+    {
+        ui->informacje->setText("Podaj adres e-mail");
+        return;
+    }
+    if (!sprawdz_uzytkownika())
+    {
+        ui->informacje->setText("Podaj nazwę użytkownika");
+        return;
+    }
+    if (!sprawdz_haslo())
+    {
+        ui->informacje->setText("Podaj hasło");
+        return;
+    }
+    this->accept();
+}
+
+void DodawanieUzytkownika::anuluj_wcisniety()
+{
+    this->reject();
 }

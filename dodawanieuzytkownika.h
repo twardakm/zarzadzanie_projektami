@@ -2,7 +2,7 @@
 #define DODAWANIEUZYTKOWNIKA_H
 
 #include <QDialog>
-#include <QSqlDatabase>
+#include <QtSql/QSqlDatabase>
 #include "ustawieniawstepne.h"
 
 namespace Ui {
@@ -15,14 +15,20 @@ class DodawanieUzytkownika : public QDialog
 
 public:
     explicit DodawanieUzytkownika(QWidget *parent = 0);
-    DodawanieUzytkownika(QWidget *parent, QSqlDatabase *baza);
+    DodawanieUzytkownika(QWidget *parent, QSqlDatabase *ba);
     ~DodawanieUzytkownika();
 
+    bool sprawdz_haslo();
+    bool sprawdz_mail();
+    bool sprawdz_uzytkownika();
+
 private slots:
-    void przyciski_zaakceptowano();
+    void zatwierdz_wcisniety();
+    void anuluj_wcisniety();
 
 private:
     Ui::DodawanieUzytkownika *ui;
+    QSqlDatabase baza;
 };
 
 #endif // DODAWANIEUZYTKOWNIKA_H
