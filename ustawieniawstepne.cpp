@@ -77,7 +77,6 @@ bool UstawieniaWstepne::sprawdz_dane_logowania()
 
 bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
 {
-
     //1. sprawdzanie czy istnieje plik
     if (!QFile::exists(ui->sciezka->text()))
     {

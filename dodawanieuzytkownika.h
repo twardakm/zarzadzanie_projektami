@@ -2,7 +2,8 @@
 #define DODAWANIEUZYTKOWNIKA_H
 
 #include <QDialog>
-#include <QtSql/QSqlDatabase>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include "ustawieniawstepne.h"
 
 namespace Ui {

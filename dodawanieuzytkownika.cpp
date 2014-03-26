@@ -73,6 +73,22 @@ void DodawanieUzytkownika::zatwierdz_wcisniety()
         ui->informacje->setText("Podaj hasło");
         return;
     }
+
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    hash.addData(ui->haslo_edycja->text().toLatin1());
+    //zapisywanie danych do bazy
+    QSqlQuery zapytanie(baza);
+    if(!zapytanie.exec("INSERT INTO "
+                       + (QString)TABELA_UZYTKOWNICY +
+                       " VALUES ('"
+                       + ui->nazwa_uzytkownika_edycja->text() + "', '"
+                       + ui->mail_edycja->text() + "', '"
+                       + (QString)hash.result().toHex() + "')"))
+    {
+        ui->informacje->setText("Nie udało się dodać użytkownika do bazy danych");
+        return;
+    }
+
     this->accept();
 }
 
