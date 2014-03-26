@@ -11,8 +11,8 @@ private:
 protected:
     QString nazwa;
 public:
-    Uzytkownik(QString nazwa, QString haslo, QString e_mail);
     Uzytkownik();
+    Uzytkownik(QString n, QString h, QString e);
     ~Uzytkownik();
 };
 

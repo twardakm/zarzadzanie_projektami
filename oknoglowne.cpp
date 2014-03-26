@@ -11,23 +11,20 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
     connect(ui->zmien_uzytkownika, SIGNAL(triggered()),
             this, SLOT(zmien_uzytkownika_wcisniety()));
 
-    this->uzytkownik = new QString;
     this->wczytaj_dane();
 }
 
 OknoGlowne::~OknoGlowne()
 {
     if (ui != NULL) delete this->ui;
-    if (uzytkownik != NULL) delete this->uzytkownik;
-    if (okno != NULL) delete this->okno;
 }
 
 void OknoGlowne::wczytaj_dane()
 {
     /*Wczytanie danych z bazy
      * -------------------- */
-    okno = new UstawieniaWstepne(this);
-    okno->exec();
+    UstawieniaWstepne okno(this, &uzytkownik);
+    okno.exec();
     /* -------------------- */
 }
 

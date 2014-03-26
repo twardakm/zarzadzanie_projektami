@@ -1,9 +1,10 @@
 #include "ustawieniawstepne.h"
 #include "ui_ustawieniawstepne.h"
 
-UstawieniaWstepne::UstawieniaWstepne(QWidget *parent) :
+UstawieniaWstepne::UstawieniaWstepne(QWidget *parent, Uzytkownik *u) :
     QWizard(parent),
-    ui(new Ui::UstawieniaWstepne)
+    ui(new Ui::UstawieniaWstepne),
+    uzytkownik(u)
 {
     this->activateWindow();
     ui->setupUi(this);
@@ -38,6 +39,7 @@ bool UstawieniaWstepne::validateCurrentPage()
     {
         if(!sprawdz_dane_logowania())
             return false;
+        zaloguj_uzytkownika();
     }
     return true;
 }
@@ -129,6 +131,10 @@ void UstawieniaWstepne::odswiez_liste_uzytkownikow()
         ui->lista_uzytkownikow->addItem(zapytanie->value(0).toString());
 
     delete zapytanie;
+}
+
+void UstawieniaWstepne::zaloguj_uzytkownika()
+{
 }
 
 void UstawieniaWstepne::przegladaj_wcisniety()

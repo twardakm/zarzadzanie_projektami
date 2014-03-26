@@ -9,6 +9,7 @@
 #include <iterator>
 
 #include "ustawieniawstepne.h"
+#include "uzytkownik.h"
 
 namespace Ui {
 class OknoGlowne;
@@ -25,7 +26,7 @@ public:
     void wczytaj_dane(); //wczytuje dane z bazy danych
 
 protected:
-
+    Uzytkownik uzytkownik;
 
 private slots:
     void informacje_Qt_wcisniety();
@@ -33,10 +34,6 @@ private slots:
 
 private:
     Ui::OknoGlowne *ui;
-
-    UstawieniaWstepne *okno;
-    QString *uzytkownik;
-    std::list <QString> projekty; //lista projektów do których jest przypisany użytkownik
 };
 
 

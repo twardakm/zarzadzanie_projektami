@@ -13,6 +13,8 @@
 #include <QCryptographicHash>
 
 #include "dodawanieuzytkownika.h"
+#include "oknoglowne.h"
+#include "uzytkownik.h"
 
 #define TABELA_UZYTKOWNICY "uzytkownicy"
 #define TABELA_HASLO "haslo"
@@ -31,7 +33,7 @@ class UstawieniaWstepne : public QWizard
     Q_OBJECT
 
 public:
-    explicit UstawieniaWstepne(QWidget *parent = 0);
+    explicit UstawieniaWstepne(QWidget *parent = 0, Uzytkownik *u = 0);
     ~UstawieniaWstepne();
 
     bool sprawdz_poprawnosc_sqlite();
@@ -47,10 +49,12 @@ protected:
 
 private:
     Ui::UstawieniaWstepne *ui;
+    Uzytkownik *uzytkownik;
 
     void odswiez_liste_uzytkownikow();
     bool sprawdz_dane_logowania();
     bool validateCurrentPage();
+    void zaloguj_uzytkownika();
 };
 
 #endif // USTAWIENIAWSTEPNE_H
