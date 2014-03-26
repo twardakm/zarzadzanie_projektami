@@ -26,6 +26,7 @@ void OknoGlowne::wczytaj_dane()
     UstawieniaWstepne okno(this, &uzytkownik);
     okno.exec();
     /* -------------------- */
+    ui->nazwa_uzytkownika->setText(uzytkownik.podaj_nazwe());
 }
 
 void OknoGlowne::informacje_Qt_wcisniety()

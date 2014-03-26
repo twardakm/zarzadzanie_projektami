@@ -135,6 +135,10 @@ void UstawieniaWstepne::odswiez_liste_uzytkownikow()
 
 void UstawieniaWstepne::zaloguj_uzytkownika()
 {
+    this->uzytkownik->zaloguj(
+                ui->lista_uzytkownikow->currentItem()->text(),
+                ui->edycja_mail->text(),
+                ui->sciezka->text());
 }
 
 void UstawieniaWstepne::przegladaj_wcisniety()
