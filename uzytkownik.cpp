@@ -51,13 +51,47 @@ void Uzytkownik::wyloguj()
     zalogowany = false;
 }
 
-bool usun_uzytkownika()
+bool Uzytkownik::sprawdz_haslo(QString h)
+{
+    QSqlDatabase baza = QSqlDatabase::addDatabase("QSQLITE");
+    baza.setDatabaseName(this->podaj_adres_bazy());
+
+    if(!baza.open())
+        return false;
+
+    QSqlQuery zapytanie(baza);
+
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    hash.addData(h.toLatin1());
+
+    zapytanie.exec("SELECT 'haslo' FROM 'uzytkownicy' "
+                    "WHERE 'nazwa'='" + this->podaj_nazwe() +"'");
+    zapytanie.next();
+
+    if(zapytanie.value(0).toString() != hash.result().toHex())
+        return false;
+    else
+        return true;
+}
+
+bool Uzytkownik::usun_uzytkownika()
 {
     return true;
 }
 
-bool usun_uzytkownika(QString haslo)
+bool Uzytkownik::usun_uzytkownika(QString haslo)
 {
-    haslo = "";
+    if (!sprawdz_haslo(haslo))
+        return false;
+    QSqlDatabase baza = QSqlDatabase::addDatabase("QSQLITE");
+    baza.setDatabaseName(this->podaj_adres_bazy());
+
+    if(!baza.open())
+        return false;
+    QSqlQuery zapytanie(baza);
+    zapytanie.exec("SELECT 'nazwa' FROM 'uzytkownicy' "
+                    "WHERE 'nazwa'='" + this->podaj_nazwe() +"'");
+    zapytanie.next();
+
     return true;
 }

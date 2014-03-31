@@ -2,6 +2,10 @@
 #define UZYTKOWNIK_H
 
 #include <QString>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QCryptographicHash>
+#include <QVariant>
 
 class Uzytkownik
 {
@@ -23,6 +27,7 @@ public:
 
     void zaloguj(QString n, QString e, QString a);
     void wyloguj();
+    bool sprawdz_haslo(QString h);
 
     bool usun_uzytkownika();
     bool usun_uzytkownika(QString haslo);
