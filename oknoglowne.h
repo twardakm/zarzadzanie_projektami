@@ -31,9 +31,11 @@ protected:
 private slots:
     void informacje_Qt_wcisniety();
     void zmien_uzytkownika_wcisniety();
+    void wyloguj_wcisniety();
 
 private:
     Ui::OknoGlowne *ui;
+    void odswiez();
 };
 
 

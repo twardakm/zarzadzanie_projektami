@@ -63,7 +63,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPomoc">
@@ -77,6 +77,8 @@
      <string>Plik</string>
     </property>
     <addaction name="zmien_uzytkownika"/>
+    <addaction name="separator"/>
+    <addaction name="wyloguj"/>
    </widget>
    <addaction name="menuPlik"/>
    <addaction name="menuPomoc"/>
@@ -90,6 +92,11 @@
   <action name="zmien_uzytkownika">
    <property name="text">
     <string>Zmień użytkownika</string>
+   </property>
+  </action>
+  <action name="wyloguj">
+   <property name="text">
+    <string>Wyloguj</string>
    </property>
   </action>
  </widget>
