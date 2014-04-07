@@ -81,7 +81,8 @@ bool Uzytkownik::sprawdz_haslo(QString h)
 
 bool Uzytkownik::usun_uzytkownika()
 {
-    return true;
+    //QInputDialog
+    return false;
 }
 
 bool Uzytkownik::usun_uzytkownika(QString haslo)

@@ -7,6 +7,7 @@
 #include <QCryptographicHash>
 #include <QVariant>
 #include <QDebug>
+#include <QInputDialog>
 
 class Uzytkownik
 {

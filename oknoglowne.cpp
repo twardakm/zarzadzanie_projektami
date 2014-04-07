@@ -56,8 +56,13 @@ void OknoGlowne::wyloguj_wcisniety()
 
 void OknoGlowne::usun_wcisniety()
 {
-    if(!this->uzytkownik.usun_uzytkownika("haslo"))
+    if(!this->uzytkownik.usun_uzytkownika())
+    {
+        QMessageBox blad(this);
+        blad.setText("Nie udało się usunąć użytkownika");
+        blad.exec();
         return;
+    }
     this->uzytkownik.wyloguj();
     this->odswiez();
 }
