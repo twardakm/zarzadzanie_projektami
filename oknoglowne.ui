@@ -63,7 +63,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPomoc">
@@ -80,7 +80,14 @@
     <addaction name="separator"/>
     <addaction name="wyloguj"/>
    </widget>
+   <widget class="QMenu" name="menuUzytkownik">
+    <property name="title">
+     <string>Użytkownik</string>
+    </property>
+    <addaction name="usun"/>
+   </widget>
    <addaction name="menuPlik"/>
+   <addaction name="menuUzytkownik"/>
    <addaction name="menuPomoc"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -97,6 +104,11 @@
   <action name="wyloguj">
    <property name="text">
     <string>Wyloguj</string>
+   </property>
+  </action>
+  <action name="usun">
+   <property name="text">
+    <string>Usuń</string>
    </property>
   </action>
  </widget>

@@ -12,7 +12,8 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             this, SLOT(zmien_uzytkownika_wcisniety()));
     connect(ui->wyloguj, SIGNAL(triggered()),
             this, SLOT(wyloguj_wcisniety()));
-
+    connect(ui->usun, SIGNAL(triggered()), this,
+            SLOT(usun_wcisniety()));
     this->wczytaj_dane();
 }
 
@@ -28,12 +29,13 @@ void OknoGlowne::wczytaj_dane()
     UstawieniaWstepne okno(this, &uzytkownik);
     okno.exec();
     /* -------------------- */
-    ui->nazwa_uzytkownika->setText(uzytkownik.podaj_nazwe());
+    odswiez();
 }
 
 void OknoGlowne::odswiez()
 {
     ui->nazwa_uzytkownika->setText(uzytkownik.podaj_nazwe());
+    ui->menuUzytkownik->setTitle(uzytkownik.podaj_nazwe());
 }
 
 void OknoGlowne::informacje_Qt_wcisniety()
@@ -48,6 +50,14 @@ void OknoGlowne::zmien_uzytkownika_wcisniety()
 
 void OknoGlowne::wyloguj_wcisniety()
 {
+    this->uzytkownik.wyloguj();
+    this->odswiez();
+}
+
+void OknoGlowne::usun_wcisniety()
+{
+    if(!this->uzytkownik.usun_uzytkownika("haslo"))
+        return;
     this->uzytkownik.wyloguj();
     this->odswiez();
 }

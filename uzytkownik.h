@@ -6,6 +6,7 @@
 #include <QtSql/QSqlQuery>
 #include <QCryptographicHash>
 #include <QVariant>
+#include <QDebug>
 
 class Uzytkownik
 {

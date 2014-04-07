@@ -32,6 +32,7 @@ private slots:
     void informacje_Qt_wcisniety();
     void zmien_uzytkownika_wcisniety();
     void wyloguj_wcisniety();
+    void usun_wcisniety();
 
 private:
     Ui::OknoGlowne *ui;

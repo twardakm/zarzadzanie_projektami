@@ -64,9 +64,14 @@ bool Uzytkownik::sprawdz_haslo(QString h)
     QCryptographicHash hash(QCryptographicHash::Md5);
     hash.addData(h.toLatin1());
 
-    zapytanie.exec("SELECT 'haslo' FROM 'uzytkownicy' "
-                    "WHERE 'nazwa'='" + this->podaj_nazwe() +"'");
+    qDebug() << this->podaj_nazwe();
+
+    zapytanie.exec("SELECT haslo FROM uzytkownicy "
+                   "WHERE nazwa='" + this->podaj_nazwe() +"'");
     zapytanie.next();
+
+    qDebug() << hash.result().toHex();
+    qDebug() << zapytanie.value(0).toString();
 
     if(zapytanie.value(0).toString() != hash.result().toHex())
         return false;
@@ -86,12 +91,24 @@ bool Uzytkownik::usun_uzytkownika(QString haslo)
     QSqlDatabase baza = QSqlDatabase::addDatabase("QSQLITE");
     baza.setDatabaseName(this->podaj_adres_bazy());
 
+    qDebug() << this->podaj_adres_bazy();
+
     if(!baza.open())
         return false;
+
     QSqlQuery zapytanie(baza);
-    zapytanie.exec("SELECT 'nazwa' FROM 'uzytkownicy' "
-                    "WHERE 'nazwa'='" + this->podaj_nazwe() +"'");
+    zapytanie.exec("SELECT nazwa FROM uzytkownicy "
+                    "WHERE nazwa='" + this->podaj_nazwe() +"'");
     zapytanie.next();
+
+    qDebug() << zapytanie.value(0).toString();
+
+    if (zapytanie.value(0).toString() != this->podaj_nazwe())
+        return false;
+
+    if(!(zapytanie.exec("DELETE FROM uzytkownicy "
+                   "WHERE nazwa='" + this->podaj_nazwe() +"'")))
+        return false;
 
     return true;
 }
