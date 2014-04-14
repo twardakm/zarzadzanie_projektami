@@ -58,10 +58,14 @@ void OknoGlowne::usun_wcisniety()
 {
     if(!this->uzytkownik.usun_uzytkownika())
     {
-        QMessageBox blad(this);
-        blad.setText("Nie udało się usunąć użytkownika");
-        blad.exec();
+        QMessageBox::warning(this,"Usunięcie użytkownika",
+                             "Nie udało się usunąć użytkownika");
         return;
+    }
+    else
+    {
+        QMessageBox::information(this, "Usunięcie użytkownika",
+                                 "Poprawnie usunięto użytkownika");
     }
     this->uzytkownik.wyloguj();
     this->odswiez();

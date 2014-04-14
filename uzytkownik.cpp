@@ -81,8 +81,13 @@ bool Uzytkownik::sprawdz_haslo(QString h)
 
 bool Uzytkownik::usun_uzytkownika()
 {
-    //QInputDialog
-    return false;
+    QInputDialog input;
+    input.setTextEchoMode(QLineEdit::Password);
+    input.setLabelText("Potwierdź hasło użytkownika");
+    input.exec();
+    if(!this->usun_uzytkownika(input.textValue()))
+        return false;
+    return true;
 }
 
 bool Uzytkownik::usun_uzytkownika(QString haslo)
