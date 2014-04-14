@@ -36,6 +36,28 @@ void OknoGlowne::odswiez()
 {
     ui->nazwa_uzytkownika->setText(uzytkownik.podaj_nazwe());
     ui->menuUzytkownik->setTitle(uzytkownik.podaj_nazwe());
+
+    this->pokaz_projekty();
+}
+
+void OknoGlowne::pokaz_projekty()
+{
+    //wczytanie adresu projektu
+    baza = QSqlDatabase::addDatabase("QSQLITE");
+    baza.setDatabaseName(uzytkownik.podaj_adres_bazy());
+
+    if(!baza.open())
+    {
+        //tu dopisać co się dzieje jak nie idzie otworzyć bazy danych
+    }
+
+    QSqlQuery *zapytanie = new QSqlQuery(uzytkownik.podaj_adres_bazy());
+    zapytanie->exec("SELECT adres_bazy FROM projekty");
+    zapytanie->next();
+    qDebug() << "Adres bazy: " << zapytanie->value(0).toString();
+
+
+    baza.close();
 }
 
 void OknoGlowne::informacje_Qt_wcisniety()

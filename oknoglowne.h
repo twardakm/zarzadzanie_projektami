@@ -5,7 +5,7 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QIcon>
-#include <list>
+#include <vector>
 #include <iterator>
 
 #include "ustawieniawstepne.h"
@@ -27,6 +27,11 @@ public:
 
 protected:
     Uzytkownik uzytkownik;
+    void pokaz_projekty();
+    void odswiez();
+    QSqlDatabase baza;
+    std::vector<QString> projekty;
+
 
 private slots:
     void informacje_Qt_wcisniety();
@@ -36,7 +41,8 @@ private slots:
 
 private:
     Ui::OknoGlowne *ui;
-    void odswiez();
+
+
 };
 
 
