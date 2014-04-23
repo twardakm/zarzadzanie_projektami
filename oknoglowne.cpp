@@ -42,6 +42,7 @@ void OknoGlowne::odswiez()
 
 void OknoGlowne::pokaz_projekty()
 {
+    ui->listaProjektow->clear();
     QSqlDatabase *baza_projekt;
     QSqlQuery *projekt_zapytanie;
     //wczytanie adresu projektu
@@ -70,6 +71,12 @@ void OknoGlowne::pokaz_projekty()
         projekt_zapytanie->exec("SELECT admin FROM administratorzy WHERE admin='" + uzytkownik.podaj_nazwe() +"'");
         if (projekt_zapytanie->next())
             ui->listaProjektow->addItem(zapytanie->value(1).toString());
+        else
+        {
+            projekt_zapytanie->exec("SELECT uzytkownik FROM uzytkownicy WHERE uzytkownik='" + uzytkownik.podaj_nazwe() + "'");
+            if (projekt_zapytanie->next())
+                ui->listaProjektow->addItem(zapytanie->value(1).toString());
+        }
 
         delete projekt_zapytanie;
         baza_projekt->close();
