@@ -35,6 +35,8 @@ private slots:
     void wyloguj_wcisniety();
     void usun_wcisniety();
 
+    void listaProjektow_aktywny(const QModelIndex &index);
+
 private:
     Ui::OknoGlowne *ui;
 

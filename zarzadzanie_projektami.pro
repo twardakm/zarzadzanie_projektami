@@ -16,12 +16,16 @@ SOURCES += main.cpp\
         oknoglowne.cpp \
     uzytkownik.cpp \
     ustawieniawstepne.cpp \
-    dodawanieuzytkownika.cpp
+    dodawanieuzytkownika.cpp \
+    uczestnik.cpp \
+    projekt.cpp
 
 HEADERS  += oknoglowne.h \
     uzytkownik.h \
     ustawieniawstepne.h \
-    dodawanieuzytkownika.h
+    dodawanieuzytkownika.h \
+    uczestnik.h \
+    projekt.h
 
 FORMS    += oknoglowne.ui \
     ustawieniawstepne.ui \

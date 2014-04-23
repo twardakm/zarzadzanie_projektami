@@ -14,6 +14,8 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             this, SLOT(wyloguj_wcisniety()));
     connect(ui->usun, SIGNAL(triggered()), this,
             SLOT(usun_wcisniety()));
+    connect(ui->listaProjektow, SIGNAL(clicked(QModelIndex)), this,
+            SLOT(listaProjektow_aktywny(QModelIndex)));
     this->wczytaj_dane();
 }
 
@@ -118,4 +120,9 @@ void OknoGlowne::usun_wcisniety()
     }
     this->uzytkownik.wyloguj();
     this->odswiez();
+}
+
+void OknoGlowne::listaProjektow_aktywny(const QModelIndex &index)
+{
+    ui->listaUczestnikow->addItem("Dupa");
 }

@@ -39,12 +39,28 @@
     </property>
    </widget>
    <widget class="QListWidget" name="listaProjektow">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>50</y>
       <width>211</width>
-      <height>351</height>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listaUczestnikow">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>221</y>
+      <width>211</width>
+      <height>181</height>
      </rect>
     </property>
    </widget>
