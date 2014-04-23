@@ -42,20 +42,40 @@ void OknoGlowne::odswiez()
 
 void OknoGlowne::pokaz_projekty()
 {
+    QSqlDatabase *baza_projekt;
+    QSqlQuery *projekt_zapytanie;
     //wczytanie adresu projektu
     baza = QSqlDatabase::addDatabase("QSQLITE");
     baza.setDatabaseName(uzytkownik.podaj_adres_bazy());
 
     if(!baza.open())
     {
-        //tu dopisać co się dzieje jak nie idzie otworzyć bazy danych
+        qDebug() << "Nie otworzono";
     }
 
     QSqlQuery *zapytanie = new QSqlQuery(uzytkownik.podaj_adres_bazy());
-    zapytanie->exec("SELECT adres_bazy FROM projekty");
-    zapytanie->next();
-    qDebug() << "Adres bazy: " << zapytanie->value(0).toString();
+    zapytanie->exec("SELECT sciezka, nazwa FROM projekty");
 
+    while(zapytanie->next())
+    {
+        baza_projekt = new QSqlDatabase;
+        *baza_projekt = QSqlDatabase::addDatabase("QSQLITE");
+        baza_projekt->setDatabaseName(zapytanie->value(0).toString());
+        if(!baza_projekt->open())
+        {
+            ui->listaProjektow->addItem("Błąd otwarcia");
+        }
+
+        projekt_zapytanie = new QSqlQuery(zapytanie->value(0).toString());
+        projekt_zapytanie->exec("SELECT admin FROM administratorzy WHERE admin='" + uzytkownik.podaj_nazwe() +"'");
+        if (projekt_zapytanie->next())
+            ui->listaProjektow->addItem(zapytanie->value(1).toString());
+
+        delete projekt_zapytanie;
+        baza_projekt->close();
+        delete baza_projekt;
+        //zczytanie projektów
+    }
 
     baza.close();
 }

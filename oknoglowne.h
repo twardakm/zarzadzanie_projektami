@@ -5,8 +5,6 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QIcon>
-#include <vector>
-#include <iterator>
 
 #include "ustawieniawstepne.h"
 #include "uzytkownik.h"
@@ -30,8 +28,6 @@ protected:
     void pokaz_projekty();
     void odswiez();
     QSqlDatabase baza;
-    std::vector<QString> projekty;
-
 
 private slots:
     void informacje_Qt_wcisniety();
