@@ -28,6 +28,7 @@ protected:
     Uzytkownik uzytkownik;
     void pokaz_projekty();
     void pokaz_uczestnikow();
+    void pokaz_projekt();
     void odswiez();
     QSqlDatabase baza;
 

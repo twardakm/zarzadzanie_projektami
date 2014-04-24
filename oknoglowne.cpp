@@ -6,6 +6,7 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::OknoGlowne)
 {
     ui->setupUi(this);
+    projekt = NULL;
 
     connect(ui->informacje_Qt, SIGNAL(triggered()),
             this, SLOT(informacje_Qt_wcisniety()));
@@ -120,24 +121,40 @@ void OknoGlowne::pokaz_uczestnikow()
     {
         //utworzenie projektu
         if (projekt != NULL)
-            delete this->projekt;
-        projekt = new Projekt(zapytanie->value(0).toString(), ui->listaProjektow->currentItem()->text());
+            delete projekt;
+        projekt = new Projekt(zapytanie->value(0).toString(), ui->listaProjektow->currentItem()->text(), uzytkownik.podaj_nazwe());
 
         QSqlQuery *projekt_zapytanie;
         projekt_zapytanie = new QSqlQuery(zapytanie->value(0).toString());
         projekt_zapytanie->exec("SELECT uzytkownik FROM uzytkownicy");
         while (projekt_zapytanie->next())
+        {
             ui->listaUczestnikow->addItem(projekt_zapytanie->value(0).toString());
+            if (projekt_zapytanie->value(0).toString() == uzytkownik.podaj_nazwe())
+                projekt->ustaw_admin(false);
+        }
         projekt_zapytanie->exec("SELECT admin FROM administratorzy");
         ui->listaUczestnikow->addItem("Administratorzy:");
         while (projekt_zapytanie->next())
+        {
             ui->listaUczestnikow->addItem(projekt_zapytanie->value(0).toString());
+            if (projekt_zapytanie->value(0).toString() == uzytkownik.podaj_nazwe())
+                projekt->ustaw_admin(true);
+        }
         delete projekt_zapytanie;
     }
 
     delete baza_projekt;
     delete zapytanie;
     baza.close();
+
+    if (projekt != NULL)
+        pokaz_projekt();
+}
+
+void OknoGlowne::pokaz_projekt()
+{
+
 }
 
 void OknoGlowne::informacje_Qt_wcisniety()
