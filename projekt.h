@@ -21,6 +21,10 @@ public:
     ~Projekt();
 
     void ustaw_admin(bool a);
+
+    QString podaj_nazwe();
+    QString podaj_adres();
+    bool czy_admin();
 };
 
 #endif // PROJEKT_H

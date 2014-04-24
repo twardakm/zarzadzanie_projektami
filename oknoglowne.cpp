@@ -8,6 +8,9 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
     ui->setupUi(this);
     projekt = NULL;
 
+    ui->uczestnik_projektu->setText("");
+    ui->nazwa_projektu->setText("");
+
     connect(ui->informacje_Qt, SIGNAL(triggered()),
             this, SLOT(informacje_Qt_wcisniety()));
     connect(ui->zmien_uzytkownika, SIGNAL(triggered()),
@@ -18,6 +21,14 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             SLOT(usun_wcisniety()));
     connect(ui->listaProjektow, SIGNAL(clicked(QModelIndex)), this,
             SLOT(listaProjektow_aktywny(QModelIndex)));
+    connect(ui->terminarz, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this,
+            SLOT(terminarz_itemClicked(QTreeWidgetItem*,int)));
+
+    ui->terminarz->setExpandsOnDoubleClick(false);
+    ui->terminarz->setMaximumHeight(200);
+    ui->terminarz->setMaximumWidth(160);
+    ui->terminarz->setColumnWidth(0,88);
+    ui->terminarz->setColumnWidth(1,68);
     this->wczytaj_dane();
 }
 
@@ -154,6 +165,44 @@ void OknoGlowne::pokaz_uczestnikow()
 
 void OknoGlowne::pokaz_projekt()
 {
+    ui->nazwa_projektu->setText(projekt->podaj_nazwe());
+    if (projekt->czy_admin())
+        ui->uczestnik_projektu->setText("Administrator");
+    else
+        ui->uczestnik_projektu->setText("Uczestnik");
+
+    baza = QSqlDatabase::addDatabase("QSQLITE");
+    baza.setDatabaseName(projekt->podaj_adres());
+
+    if(!baza.open())
+    {
+        //dopisać co jak się baza nie otworzy
+    }
+
+    ui->terminarz->clear();
+    QList<QTreeWidgetItem *> lista_dane_terminarz;
+    QTreeWidgetItem *item_dane_terminarz;
+
+    QSqlQuery *zapytanie = new QSqlQuery(projekt->podaj_adres());
+    zapytanie->exec("SELECT * FROM terminarz");
+
+    while(zapytanie->next())
+    {
+        item_dane_terminarz = new QTreeWidgetItem(ui->terminarz);
+
+        item_dane_terminarz->setTextAlignment(0, Qt::AlignLeft);
+        item_dane_terminarz->setTextAlignment(1, Qt::AlignLeft);
+        item_dane_terminarz->setText(0,zapytanie->value(0).toDate().toString("dd.MM.yyyy"));
+        item_dane_terminarz->setText(1,zapytanie->value(1).toDate().toString("dd.MM.yyyy"));
+        item_dane_terminarz->setText(2,zapytanie->value(2).toString());
+
+        lista_dane_terminarz.append(item_dane_terminarz);
+
+    }
+
+    ui->terminarz->addTopLevelItems(lista_dane_terminarz);
+
+    baza.close();
 
 }
 
@@ -194,4 +243,13 @@ void OknoGlowne::listaProjektow_aktywny(const QModelIndex &index)
 {
     if (index.isValid())
         this->pokaz_uczestnikow();
+}
+
+void OknoGlowne::terminarz_itemClicked(QTreeWidgetItem *item, int column)
+{
+    if (column >= 0)
+    {
+        ui->terminarz_opis->clear();
+        ui->terminarz_opis->setText(item->text(2));
+    }
 }

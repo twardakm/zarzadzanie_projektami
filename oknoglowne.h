@@ -5,6 +5,7 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QIcon>
+#include <QTreeWidgetItem>
 
 #include "projekt.h"
 #include "ustawieniawstepne.h"
@@ -39,6 +40,8 @@ private slots:
     void usun_wcisniety();
 
     void listaProjektow_aktywny(const QModelIndex &index);
+
+    void terminarz_itemClicked(QTreeWidgetItem *item, int column);
 
 private:
     Ui::OknoGlowne *ui;
