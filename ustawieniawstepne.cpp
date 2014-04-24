@@ -8,7 +8,6 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent, Uzytkownik *u) :
 {
     this->activateWindow();
     ui->setupUi(this);
-    ui->sciezka->insert("zarzadzanie.sqlite");
     //kolor błędu
     QPalette kolor;
     kolor.setColor(QPalette::WindowText, Qt::red);
@@ -20,12 +19,44 @@ UstawieniaWstepne::UstawieniaWstepne(QWidget *parent, Uzytkownik *u) :
     connect(ui->lista_uzytkownikow, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(wyczysc_dane_formularza()));
     connect(ui->utworz, SIGNAL(released()), this, SLOT(utworz_wcisniety()));
     connect(ui->dodaj_uzytkownika, SIGNAL(clicked()), this, SLOT(dodaj_uzytkownika_wcisniety()));
+    odczytaj_plik_konfiguracyjny();
 }
 
 UstawieniaWstepne::~UstawieniaWstepne()
 {
     if(baza.isOpen()) baza.close();
     if(ui != NULL) delete ui;
+}
+
+void UstawieniaWstepne::odczytaj_plik_konfiguracyjny()
+{
+    if(!QFile::exists("config.txt"))
+    {
+        ui->blad->setText("Tworzenie domyślnego pliku konfiguracyjnego");
+        QFile plik("config.txt");
+        if(!plik.open(QIODevice::ReadWrite))
+        {
+            ui->blad->setText("Nie udało się otworzyć pliku");
+            return;
+        }
+        plik.write("zarzadzanie.sqlite");
+        plik.close();
+        ui->sciezka->addItem("zarzadzanie.sqlite");
+        return;
+    }
+
+    QFile plik("config.txt");
+    if (!plik.open(QIODevice::ReadOnly))
+    {
+        ui->blad->setText("Nie udało się otworzyć pliku konfiguracyjnego");
+        return;
+    }
+    QString napis = plik.readAll();
+    napis.remove(QChar('\n'));
+    QStringList lista = napis.split(";", QString::SkipEmptyParts);
+    plik.close();
+
+    ui->sciezka->addItems(lista);
 }
 
 bool UstawieniaWstepne::validateCurrentPage()
@@ -80,14 +111,14 @@ bool UstawieniaWstepne::sprawdz_dane_logowania()
 bool UstawieniaWstepne::sprawdz_poprawnosc_sqlite()
 {
     //1. sprawdzanie czy istnieje plik
-    if (!QFile::exists(ui->sciezka->text()))
+    if (!QFile::exists(ui->sciezka->currentText()))
     {
         ui->blad->setText("Podany plik nie istnieje");
         return false;
     }
 
     baza = QSqlDatabase::addDatabase("QSQLITE");
-    baza.setDatabaseName(ui->sciezka->text());
+    baza.setDatabaseName(ui->sciezka->currentText());
 
     //2. sprawdzanie czy baza danych poprawnie się otworzyła
     if(!baza.open())
@@ -127,6 +158,8 @@ void UstawieniaWstepne::odswiez_liste_uzytkownikow()
     QSqlQuery *zapytanie = new QSqlQuery(baza);
     zapytanie->exec(KOLUMNA_NAZWA_SELECT);
 
+    ui->lista_uzytkownikow->clear();
+
     while(zapytanie->next())
         ui->lista_uzytkownikow->addItem(zapytanie->value(0).toString());
 
@@ -138,28 +171,27 @@ void UstawieniaWstepne::zaloguj_uzytkownika()
     this->uzytkownik->zaloguj(
                 ui->lista_uzytkownikow->currentItem()->text(),
                 ui->edycja_mail->text(),
-                ui->sciezka->text());
+                ui->sciezka->currentText());
 }
 
 void UstawieniaWstepne::przegladaj_wcisniety()
 {
-    ui->sciezka->selectAll();
-    ui->sciezka->insert(QFileDialog::getOpenFileName(this, tr("Wybierz plik bazy danych"),
+    ui->sciezka->addItem(QFileDialog::getOpenFileName(this, tr("Wybierz plik bazy danych"),
                                                QApplication::applicationDirPath(), tr("Bazy danych (*.sqlite)")));
+    ui->sciezka->setCurrentIndex(ui->sciezka->count()-1);
 }
 
 void UstawieniaWstepne::utworz_wcisniety()
 {
-    ui->sciezka->selectAll();
-    ui->sciezka->insert(QFileDialog::getSaveFileName(this, tr("Utwórz bazę danych"),
+    ui->sciezka->addItem(QFileDialog::getSaveFileName(this, tr("Utwórz bazę danych"),
                                                QApplication::applicationDirPath(), tr("Bazy danych (*.sqlite)")));
-    QFile *plik = new QFile(ui->sciezka->text());
+    QFile *plik = new QFile(ui->sciezka->currentText());
     plik->open(QIODevice::WriteOnly);
     plik->close();
     delete plik;
 
     baza = QSqlDatabase::addDatabase("QSQLITE");
-    baza.setDatabaseName(ui->sciezka->text());
+    baza.setDatabaseName(ui->sciezka->currentText());
 
     //sprawdzanie czy baza danych poprawnie się otworzyła
     if(!baza.open())
@@ -169,7 +201,8 @@ void UstawieniaWstepne::utworz_wcisniety()
     }
     //sprawdzenie poprawności wykonania polecenia
     QSqlQuery *zapytanie = new QSqlQuery(baza);
-    if (!zapytanie->exec("CREATE TABLE 'uzytkownicy' ('nazwa' TEXT, 'mail' TEXT, 'haslo' TEXT)"))
+    if (!zapytanie->exec("CREATE TABLE 'uzytkownicy' ('nazwa' TEXT, 'mail' TEXT, 'haslo' TEXT)") ||
+        !zapytanie->exec("CREATE TABLE 'projekty' ('sciezka' TEXT, 'nazwa' TEXT)"))
     {
         ui->blad->setText("Błąd tworzenia tablicy");
         delete zapytanie;

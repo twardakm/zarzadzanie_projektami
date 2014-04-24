@@ -55,6 +55,8 @@ private:
     bool sprawdz_dane_logowania();
     bool validateCurrentPage();
     void zaloguj_uzytkownika();
+
+    void odczytaj_plik_konfiguracyjny();
 };
 
 #endif // USTAWIENIAWSTEPNE_H
