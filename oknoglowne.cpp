@@ -86,6 +86,50 @@ void OknoGlowne::pokaz_projekty()
         //zczytanie projektów
     }
 
+    delete zapytanie;
+    baza.close();
+}
+
+void OknoGlowne::pokaz_uczestnikow()
+{
+    ui->listaUczestnikow->clear();
+    ui->listaUczestnikow->addItem("Uczestnicy:");
+
+    baza = QSqlDatabase::addDatabase("QSQLITE");
+    baza.setDatabaseName(uzytkownik.podaj_adres_bazy());
+
+    if(!baza.open())
+    {
+        qDebug() << "Nie otworzono";
+    }
+    QSqlQuery *zapytanie = new QSqlQuery(uzytkownik.podaj_adres_bazy());
+    qDebug() << "Zaznaczony projekt: " << ui->listaProjektow->currentItem()->text();
+    zapytanie->exec("SELECT sciezka FROM projekty WHERE nazwa='" + ui->listaProjektow->currentItem()->text() + "'");
+    zapytanie->next();
+    //otwarcie bazy danych z projektem
+    QSqlDatabase *baza_projekt = new QSqlDatabase;
+    *baza_projekt = QSqlDatabase::addDatabase("QSQLITE");
+    baza_projekt->setDatabaseName(zapytanie->value(0).toString());
+    if(!baza_projekt->open())
+    {
+        ui->listaUczestnikow->addItem("Błąd otwarcia");
+    }
+    else
+    {
+        QSqlQuery *projekt_zapytanie;
+        projekt_zapytanie = new QSqlQuery(zapytanie->value(0).toString());
+        projekt_zapytanie->exec("SELECT uzytkownik FROM uzytkownicy");
+        while (projekt_zapytanie->next())
+            ui->listaUczestnikow->addItem(projekt_zapytanie->value(0).toString());
+        projekt_zapytanie->exec("SELECT admin FROM administratorzy");
+        ui->listaUczestnikow->addItem("Administratorzy:");
+        while (projekt_zapytanie->next())
+            ui->listaUczestnikow->addItem(projekt_zapytanie->value(0).toString());
+        delete projekt_zapytanie;
+    }
+
+    delete baza_projekt;
+    delete zapytanie;
     baza.close();
 }
 
@@ -124,5 +168,6 @@ void OknoGlowne::usun_wcisniety()
 
 void OknoGlowne::listaProjektow_aktywny(const QModelIndex &index)
 {
-    ui->listaUczestnikow->addItem("Dupa");
+    if (index.isValid())
+        this->pokaz_uczestnikow();
 }
