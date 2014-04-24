@@ -21,7 +21,7 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             SLOT(usun_wcisniety()));
     connect(ui->listaProjektow, SIGNAL(clicked(QModelIndex)), this,
             SLOT(listaProjektow_aktywny(QModelIndex)));
-    connect(ui->terminarz, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this,
+    connect(ui->terminarz, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this,
             SLOT(terminarz_itemClicked(QTreeWidgetItem*,int)));
 
     ui->terminarz->setExpandsOnDoubleClick(false);
