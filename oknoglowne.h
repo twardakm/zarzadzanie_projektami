@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QIcon>
 
+#include "projekt.h"
 #include "ustawieniawstepne.h"
 #include "uzytkownik.h"
 
@@ -40,8 +41,7 @@ private slots:
 
 private:
     Ui::OknoGlowne *ui;
-
-
+    Projekt * projekt;
 };
 
 

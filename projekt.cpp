@@ -1,5 +1,5 @@
 #include "projekt.h"
 
-Projekt::Projekt(QString adres) : adres_bazy(adres)
+Projekt::Projekt(QString adres, QString n) : adres_bazy(adres), nazwa(n)
 {
 }

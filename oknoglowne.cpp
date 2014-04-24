@@ -1,5 +1,6 @@
 #include "oknoglowne.h"
 #include "ui_oknoglowne.h"
+#include "projekt.h"
 
 OknoGlowne::OknoGlowne(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::OknoGlowne)
@@ -22,6 +23,7 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
 OknoGlowne::~OknoGlowne()
 {
     if (ui != NULL) delete this->ui;
+    if (projekt != NULL) delete this->projekt;
 }
 
 void OknoGlowne::wczytaj_dane()
@@ -116,6 +118,11 @@ void OknoGlowne::pokaz_uczestnikow()
     }
     else
     {
+        //utworzenie projektu
+        if (projekt != NULL)
+            delete this->projekt;
+        projekt = new Projekt(zapytanie->value(0).toString(), ui->listaProjektow->currentItem()->text());
+
         QSqlQuery *projekt_zapytanie;
         projekt_zapytanie = new QSqlQuery(zapytanie->value(0).toString());
         projekt_zapytanie->exec("SELECT uzytkownik FROM uzytkownicy");

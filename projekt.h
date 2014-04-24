@@ -2,20 +2,20 @@
 #define PROJEKT_H
 
 #include <QString>
-#include <vector>
-#include <iterator>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include "uzytkownik.h"
 #include "uczestnik.h"
+#include "oknoglowne.h"
 
 class Projekt
 {
 private:
     QString nazwa;
     QString adres_bazy;
-    vector<Uczestnik> uczestnik;
 
 public:
-    Projekt(QString adres);
+    Projekt(QString adres, QString n);
 };
 
 #endif // PROJEKT_H
