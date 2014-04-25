@@ -10,6 +10,7 @@
 #include "projekt.h"
 #include "ustawieniawstepne.h"
 #include "uzytkownik.h"
+#include "dodawanieprojektu.h"
 
 namespace Ui {
 class OknoGlowne;
@@ -32,6 +33,7 @@ protected:
     void pokaz_projekt();
     void odswiez();
     QSqlDatabase baza;
+    Projekt *projekt;
 
 private slots:
     void informacje_Qt_wcisniety();
@@ -43,9 +45,10 @@ private slots:
 
     void terminarz_itemClicked(QTreeWidgetItem *item, int column);
 
+    void dodaj_przycisk_clicked();
+
 private:
     Ui::OknoGlowne *ui;
-    Projekt * projekt;
 };
 
 

@@ -204,6 +204,17 @@ void OknoGlowne::pokaz_projekt()
 
     baza.close();
 
+    if (projekt->czy_admin())
+    {
+        ui->dodaj_przycisk->setEnabled(true);
+        ui->usun_przycisk->setEnabled(true);
+    }
+    else
+    {
+        ui->dodaj_przycisk->setDisabled(true);
+        ui->usun_przycisk->setDisabled(true);
+    }
+
 }
 
 void OknoGlowne::informacje_Qt_wcisniety()
@@ -252,4 +263,10 @@ void OknoGlowne::terminarz_itemClicked(QTreeWidgetItem *item, int column)
         ui->terminarz_opis->clear();
         ui->terminarz_opis->setText(item->text(2));
     }
+}
+
+void OknoGlowne::dodaj_przycisk_clicked()
+{
+    DodawanieProjektu okno;
+    okno.show();
 }

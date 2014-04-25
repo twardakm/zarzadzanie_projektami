@@ -6,7 +6,6 @@
 #include <QSqlQuery>
 #include "uzytkownik.h"
 #include "uczestnik.h"
-#include "oknoglowne.h"
 
 class Projekt
 {

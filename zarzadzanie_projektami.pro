@@ -18,17 +18,20 @@ SOURCES += main.cpp\
     ustawieniawstepne.cpp \
     dodawanieuzytkownika.cpp \
     uczestnik.cpp \
-    projekt.cpp
+    projekt.cpp \
+    dodawanieprojektu.cpp
 
 HEADERS  += oknoglowne.h \
     uzytkownik.h \
     ustawieniawstepne.h \
     dodawanieuzytkownika.h \
     uczestnik.h \
-    projekt.h
+    projekt.h \
+    dodawanieprojektu.h
 
 FORMS    += oknoglowne.ui \
     ustawieniawstepne.ui \
-    dodawanieuzytkownika.ui
+    dodawanieuzytkownika.ui \
+    dodawanieprojektu.ui
 
 RC_FILE = zarzadzanie_projektami.rc
