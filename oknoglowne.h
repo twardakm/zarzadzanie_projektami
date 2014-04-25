@@ -10,7 +10,7 @@
 #include "projekt.h"
 #include "ustawieniawstepne.h"
 #include "uzytkownik.h"
-#include "dodawanieprojektu.h"
+#include "dodawanieterminu.h"
 
 namespace Ui {
 class OknoGlowne;

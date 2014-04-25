@@ -23,6 +23,8 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             SLOT(listaProjektow_aktywny(QModelIndex)));
     connect(ui->terminarz, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this,
             SLOT(terminarz_itemClicked(QTreeWidgetItem*,int)));
+    connect(ui->dodaj_przycisk, SIGNAL(clicked()), this,
+            SLOT(dodaj_przycisk_clicked()));
 
     ui->terminarz->setExpandsOnDoubleClick(false);
     ui->terminarz->setMaximumHeight(200);
@@ -267,6 +269,7 @@ void OknoGlowne::terminarz_itemClicked(QTreeWidgetItem *item, int column)
 
 void OknoGlowne::dodaj_przycisk_clicked()
 {
-    DodawanieProjektu okno;
-    okno.show();
+    DodawanieTerminu okno(projekt->podaj_adres(), this);
+    okno.exec();
+    this->pokaz_projekt();
 }
