@@ -46,6 +46,7 @@ private slots:
     void terminarz_itemClicked(QTreeWidgetItem *item, int column);
 
     void dodaj_przycisk_clicked();
+    void usun_przycisk_clicked();
 
 private:
     Ui::OknoGlowne *ui;

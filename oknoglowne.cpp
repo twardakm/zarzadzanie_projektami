@@ -25,6 +25,8 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             SLOT(terminarz_itemClicked(QTreeWidgetItem*,int)));
     connect(ui->dodaj_przycisk, SIGNAL(clicked()), this,
             SLOT(dodaj_przycisk_clicked()));
+    connect(ui->usun_przycisk, SIGNAL(clicked()), this,
+            SLOT(usun_przycisk_clicked()));
 
     ui->terminarz->setExpandsOnDoubleClick(false);
     ui->terminarz->setMaximumHeight(200);
@@ -271,5 +273,50 @@ void OknoGlowne::dodaj_przycisk_clicked()
 {
     DodawanieTerminu okno(projekt->podaj_adres(), this);
     okno.exec();
+    this->pokaz_projekt();
+}
+
+void OknoGlowne::usun_przycisk_clicked()
+{
+    qDebug() << ui->terminarz->currentItem()->text(0);
+    QSqlDatabase *baza_projekt;
+    QSqlQuery *projekt_zapytanie;
+
+    baza_projekt = new QSqlDatabase;
+    *baza_projekt = QSqlDatabase::addDatabase("QSQLITE");
+    baza_projekt->setDatabaseName(projekt->podaj_adres());
+
+    if(!baza_projekt->open())
+    {
+        QMessageBox::warning(this, tr("Zarządzanie projektami"),
+                             tr("Nie udało się otworzyć bazy danych"),
+                             QMessageBox::Ok);
+        delete baza_projekt;
+
+        return;
+    }
+
+    projekt_zapytanie = new QSqlQuery(projekt->podaj_adres());
+    qDebug() << "DELETE FROM terminarz WHERE 'data_od' = '"
+                + QDate::fromString(ui->terminarz->currentItem()->text(0),
+                                    "dd.MM.yyyy").toString("yyyy-MM-dd") + "'";
+    if(!projekt_zapytanie->exec(
+                "DELETE FROM terminarz WHERE data_od='"
+                + QDate::fromString(ui->terminarz->currentItem()->text(0),
+                                    "dd.MM.yyyy").toString("yyyy-MM-dd") + "'" ))
+    {
+        QMessageBox::warning(this, tr("Zarządzanie projektami"),
+                             tr("Nie udało się otworzyć bazy danych"),
+                             QMessageBox::Ok);
+
+        delete projekt_zapytanie;
+        delete baza_projekt;
+
+        return;
+    }
+
+    delete projekt_zapytanie;
+    delete baza_projekt;
+
     this->pokaz_projekt();
 }
