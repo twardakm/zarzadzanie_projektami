@@ -293,6 +293,8 @@ void OknoGlowne::dodaj_przycisk_clicked()
 
 void OknoGlowne::usun_przycisk_clicked()
 {
+    if (ui->terminarz->currentColumn() < 0)
+        return;
     qDebug() << ui->terminarz->currentItem()->text(0);
     QSqlDatabase *baza_projekt;
     QSqlQuery *projekt_zapytanie;
