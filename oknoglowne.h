@@ -11,6 +11,7 @@
 #include "ustawieniawstepne.h"
 #include "uzytkownik.h"
 #include "dodawanieterminu.h"
+#include "utworzprojekt.h"
 
 namespace Ui {
 class OknoGlowne;
@@ -47,6 +48,8 @@ private slots:
 
     void dodaj_przycisk_clicked();
     void usun_przycisk_clicked();
+
+    void utworz_projekt_przycisk_clicked();
 
 private:
     Ui::OknoGlowne *ui;

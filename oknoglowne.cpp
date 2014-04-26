@@ -27,6 +27,8 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             SLOT(dodaj_przycisk_clicked()));
     connect(ui->usun_przycisk, SIGNAL(clicked()), this,
             SLOT(usun_przycisk_clicked()));
+    connect(ui->utworz_projekt_przycisk, SIGNAL(clicked()), this,
+            SLOT(utworz_projekt_przycisk_clicked()));
 
     ui->terminarz->setExpandsOnDoubleClick(false);
     ui->terminarz->setMaximumHeight(200);
@@ -62,6 +64,10 @@ void OknoGlowne::odswiez()
 
 void OknoGlowne::pokaz_projekty()
 {
+    if (uzytkownik.podaj_nazwe() != "")
+        ui->utworz_projekt_przycisk->setEnabled(true);
+    else
+        ui->utworz_projekt_przycisk->setDisabled(true);
     ui->listaProjektow->clear();
     QSqlDatabase *baza_projekt;
     QSqlQuery *projekt_zapytanie;
@@ -297,13 +303,15 @@ void OknoGlowne::usun_przycisk_clicked()
     }
 
     projekt_zapytanie = new QSqlQuery(projekt->podaj_adres());
-    qDebug() << "DELETE FROM terminarz WHERE 'data_od' = '"
-                + QDate::fromString(ui->terminarz->currentItem()->text(0),
-                                    "dd.MM.yyyy").toString("yyyy-MM-dd") + "'";
+
     if(!projekt_zapytanie->exec(
                 "DELETE FROM terminarz WHERE data_od='"
                 + QDate::fromString(ui->terminarz->currentItem()->text(0),
-                                    "dd.MM.yyyy").toString("yyyy-MM-dd") + "'" ))
+                                    "dd.MM.yyyy").toString("yyyy-MM-dd") +
+                "' and data_do='" +
+                QDate::fromString(ui->terminarz->currentItem()->text(1),
+                                    "dd.MM.yyyy").toString("yyyy-MM-dd") +
+                "' and opis='" + ui->terminarz->currentItem()->text(2) + "'"))
     {
         QMessageBox::warning(this, tr("Zarządzanie projektami"),
                              tr("Nie udało się otworzyć bazy danych"),
@@ -319,4 +327,11 @@ void OknoGlowne::usun_przycisk_clicked()
     delete baza_projekt;
 
     this->pokaz_projekt();
+}
+
+void OknoGlowne::utworz_projekt_przycisk_clicked()
+{
+   UtworzProjekt okno(uzytkownik.podaj_adres_bazy(), uzytkownik.podaj_nazwe(), this);
+   okno.exec();
+   pokaz_projekty();
 }

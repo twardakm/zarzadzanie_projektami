@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     dodawanieuzytkownika.cpp \
     uczestnik.cpp \
     projekt.cpp \
-    dodawanieterminu.cpp
+    dodawanieterminu.cpp \
+    utworzprojekt.cpp
 
 HEADERS  += oknoglowne.h \
     uzytkownik.h \
@@ -27,11 +28,13 @@ HEADERS  += oknoglowne.h \
     dodawanieuzytkownika.h \
     uczestnik.h \
     projekt.h \
-    dodawanieterminu.h
+    dodawanieterminu.h \
+    utworzprojekt.h
 
 FORMS    += oknoglowne.ui \
     ustawieniawstepne.ui \
     dodawanieuzytkownika.ui \
-    dodawanieterminu.ui
+    dodawanieterminu.ui \
+    utworzprojekt.ui
 
 RC_FILE = zarzadzanie_projektami.rc
