@@ -129,8 +129,7 @@ void UtworzProjekt::zatwierdz_przycisk_clicked()
     qDebug() << administratorzy;
 
     if (!zapytanie->exec("INSERT INTO nazwa VALUES ('" + ui->nazwa_edit->text() + "')") ||
-        !zapytanie->exec("INSERT INTO administratorzy VALUES " + administratorzy) ||
-        !zapytanie->exec("INSERT INTO uzytkownicy VALUES " + uzytkownicy))
+        !zapytanie->exec("INSERT INTO administratorzy VALUES " + administratorzy))
     {
         QMessageBox::warning(this,"Dodawanie projektu",
                              "Nie udało się stworzyć bazy danych");
@@ -138,6 +137,19 @@ void UtworzProjekt::zatwierdz_przycisk_clicked()
         delete zapytanie;
         delete baza_projekt;
         return;
+    }
+
+    if (uzytkownicy != "")
+    {
+        if (!zapytanie->exec("INSERT INTO uzytkownicy VALUES " + uzytkownicy))
+        {
+            QMessageBox::warning(this,"Dodawanie projektu",
+                                 "Nie udało się stworzyć bazy danych");
+            baza_projekt->close();
+            delete zapytanie;
+            delete baza_projekt;
+            return;
+        }
     }
 
     delete zapytanie;

@@ -51,6 +51,8 @@ private slots:
 
     void utworz_projekt_przycisk_clicked();
 
+    void usun_projekt_przycisk_clicked();
+
 private:
     Ui::OknoGlowne *ui;
 };

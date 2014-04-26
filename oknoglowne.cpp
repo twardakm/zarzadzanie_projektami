@@ -29,6 +29,8 @@ OknoGlowne::OknoGlowne(QWidget *parent) :
             SLOT(usun_przycisk_clicked()));
     connect(ui->utworz_projekt_przycisk, SIGNAL(clicked()), this,
             SLOT(utworz_projekt_przycisk_clicked()));
+    connect(ui->usun_projekt_przycisk, SIGNAL(clicked()), this,
+            SLOT(usun_projekt_przycisk_clicked()));
 
     ui->terminarz->setExpandsOnDoubleClick(false);
     ui->terminarz->setMaximumHeight(200);
@@ -58,6 +60,7 @@ void OknoGlowne::odswiez()
 {
     ui->nazwa_uzytkownika->setText(uzytkownik.podaj_nazwe());
     ui->menuUzytkownik->setTitle(uzytkownik.podaj_nazwe());
+    ui->usun_projekt_przycisk->setDisabled(true);
 
     this->pokaz_projekty();
 }
@@ -68,6 +71,7 @@ void OknoGlowne::pokaz_projekty()
         ui->utworz_projekt_przycisk->setEnabled(true);
     else
         ui->utworz_projekt_przycisk->setDisabled(true);
+
     ui->listaProjektow->clear();
     QSqlDatabase *baza_projekt;
     QSqlQuery *projekt_zapytanie;
@@ -175,6 +179,11 @@ void OknoGlowne::pokaz_uczestnikow()
 
 void OknoGlowne::pokaz_projekt()
 {
+    if (ui->listaProjektow->currentRow() >= 0)
+        ui->usun_projekt_przycisk->setEnabled(true);
+    else
+        ui->usun_projekt_przycisk->setDisabled(true);
+
     ui->nazwa_projektu->setText(projekt->podaj_nazwe());
     if (projekt->czy_admin())
         ui->uczestnik_projektu->setText("Administrator");
@@ -334,4 +343,46 @@ void OknoGlowne::utworz_projekt_przycisk_clicked()
    UtworzProjekt okno(uzytkownik.podaj_adres_bazy(), uzytkownik.podaj_nazwe(), this);
    okno.exec();
    pokaz_projekty();
+}
+
+void OknoGlowne::usun_projekt_przycisk_clicked()
+{
+    if(QMessageBox::question(this, "Usuwanie projektu", "Czy na pewno chcesz usunąć bieżący projekt: " +
+                             ui->listaProjektow->currentItem()->text() + "?",
+                             QMessageBox::Apply|QMessageBox::No) == QMessageBox::Apply)
+    {
+
+        baza = QSqlDatabase::addDatabase("QSQLITE");
+        baza.setDatabaseName(uzytkownik.podaj_adres_bazy());
+
+        if(!baza.open())
+        {
+            QMessageBox::warning(this, "Usuwanie projektu", "Nie udało się połączyć z bazą danych");
+            return;
+        }
+
+        QSqlQuery *zapytanie = new QSqlQuery(uzytkownik.podaj_adres_bazy());
+
+        zapytanie->exec("SELECT sciezka FROM projekty WHERE nazwa='" + ui->listaProjektow->currentItem()->text() + "'");
+        zapytanie->next();
+
+        if(!QFile::remove(zapytanie->value(0).toString()))
+        {
+            QMessageBox::warning(this, "Usuwanie projektu", "Nie udało się połączyć z bazą danych");
+            delete zapytanie;
+            return;
+        }
+
+        if (!zapytanie->exec("DELETE FROM projekty WHERE nazwa='" + ui->listaProjektow->currentItem()->text() + "'"))
+        {
+            QMessageBox::warning(this, "Usuwanie projektu", "Nie udało się połączyć z bazą danych");
+            delete zapytanie;
+            return;
+        }
+        delete zapytanie;
+
+        baza.close();
+
+        this->odswiez();
+    }
 }
