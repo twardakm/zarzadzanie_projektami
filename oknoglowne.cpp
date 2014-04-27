@@ -61,6 +61,12 @@ void OknoGlowne::odswiez()
     ui->nazwa_uzytkownika->setText(uzytkownik.podaj_nazwe());
     ui->menuUzytkownik->setTitle(uzytkownik.podaj_nazwe());
     ui->usun_projekt_przycisk->setDisabled(true);
+    ui->dodaj_przycisk->setDisabled(true);
+    ui->usun_przycisk->setDisabled(true);
+    ui->nazwa_projektu->setText("");
+    ui->uczestnik_projektu->setText("");
+    ui->terminarz->clear();
+    ui->terminarz_opis->clear();
 
     this->pokaz_projekty();
 }
@@ -227,11 +233,13 @@ void OknoGlowne::pokaz_projekt()
     {
         ui->dodaj_przycisk->setEnabled(true);
         ui->usun_przycisk->setEnabled(true);
+        ui->usun_projekt_przycisk->setEnabled(true);
     }
     else
     {
         ui->dodaj_przycisk->setDisabled(true);
         ui->usun_przycisk->setDisabled(true);
+        ui->usun_projekt_przycisk->setDisabled(true);
     }
 
 }
